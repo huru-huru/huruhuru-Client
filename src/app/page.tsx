@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 		url: 'https://huruhuru.netlify.app/',
 		siteName: 'Huru',
 		images: [{
-			url:'img/testOGBanner.png',
+			url:'/img/testOGBanner.png',
 		}],
 		type: 'website',
 	},
