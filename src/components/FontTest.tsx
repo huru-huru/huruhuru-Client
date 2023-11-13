@@ -37,11 +37,12 @@ const DNF = styled.div`
 	font-family: 'DNF Bit Bit v2';
 	font-size: 4rem;
 	background: linear-gradient(180deg, #fff 0%, #81efe5 100%);
+	color: linear-gradient(180deg, #fff 0%, #81efe5 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	z-index: 1;
-	filter: drop-shadow(1px 1px 1px black); /* Shadow effect */
+	-webkit-text-stroke: 1px #3b3b3b;
 `;
 
 const OverlappingDNF = styled.div`
@@ -50,7 +51,7 @@ const OverlappingDNF = styled.div`
 	background-clip: text;
 	position: relative;
 	color: #3b3b3b; /* Black color */
-	margin-top: -5.5rem; /* Adjust this value based on your design */
+	margin-top: -5.4rem; /* Adjust this value based on your design */
 `;
 
 const Neo = styled.div`
