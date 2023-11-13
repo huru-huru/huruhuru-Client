@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const FontTest = () => {
 	return (
 		<Wrapper>
-            <Image src="/img/testIcon.png" alt="" width={50} height={50} />
+            <Image src="/img/testIcon.png" alt="" width={50} height={60} />
 			<Skybori>🍑 팀 왕가탕후루 🍒</Skybori>
 			<DNF>위대한 탕후루 테스트</DNF>
 			<OverlappingDNF>위대한 탕후루 테스트</OverlappingDNF>
@@ -47,7 +47,6 @@ const DNF = styled.div`
 const OverlappingDNF = styled.div`
 	font-family: 'DNF Bit Bit v2';
 	font-size: 4rem;
-	font-weight: 1000;
 	background-clip: text;
 	position: relative;
 	color: #3b3b3b; /* Black color */
