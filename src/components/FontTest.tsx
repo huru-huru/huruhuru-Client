@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 import TitleDesignText from './common/TitleDesignText';
+import SelectButton from './common/SelectButton';
 
 const FontTest = () => {
 	return (
@@ -10,6 +11,7 @@ const FontTest = () => {
             <Image src="/img/testIcon.png" alt="" width={50} height={60} />
 			<TitleDesignText text='학교/학업' bgColor='linear-gradient(180deg, #FFF 0%, #FFD9D7 100%)' size={3.3}/>
 			<TitleDesignText text='학교 앞 탕후루' bgColor='linear-gradient(180deg, #fff 0%, #81efe5 100%)' size={5}/>
+			<SelectButton bgColor='linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)' text='이 게임 한 적 있어!'/>
 		</Wrapper>
 	);
 };
