@@ -2,15 +2,14 @@
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
+import TitleDesignText from './common/TitleDesignText';
 
 const FontTest = () => {
 	return (
 		<Wrapper>
             <Image src="/img/testIcon.png" alt="" width={50} height={60} />
-			<Skybori>🍑 팀 왕가탕후루 🍒</Skybori>
-			<DNF>위대한 탕후루 테스트</DNF>
-			<OverlappingDNF>위대한 탕후루 테스트</OverlappingDNF>
-			<Neo>아자아자 파이팅</Neo>
+			<TitleDesignText text='학교/학업' bgColor='linear-gradient(180deg, #FFF 0%, #FFD9D7 100%)' size={3.3}/>
+			<TitleDesignText text='학교 앞 탕후루' bgColor='linear-gradient(180deg, #fff 0%, #81efe5 100%)' size={5}/>
 		</Wrapper>
 	);
 };
@@ -37,7 +36,6 @@ const DNF = styled.div`
 	font-family: 'DNF Bit Bit v2';
 	font-size: 4rem;
 	background: linear-gradient(180deg, #fff 0%, #81efe5 100%);
-	color: linear-gradient(180deg, #fff 0%, #81efe5 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
