@@ -3,7 +3,7 @@ import LandingSection from '@/components/landing/Landing';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Huru',
+	title: '학교 앞 탕후루',
 	description: '탕후루로 보는 2000년대 공감 테스트',
 	icons: {
 		icon: '/img/testIcon.png',
