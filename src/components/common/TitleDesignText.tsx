@@ -5,7 +5,7 @@ import styled from 'styled-components';
 type TitleDesignTextPropsType = {
 	text: string;
 	bgColor: string;
-	size: number; // Change type to number
+	size: number;
 };
 
 const TitleDesignText = (props: TitleDesignTextPropsType) => {
