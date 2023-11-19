@@ -4,8 +4,10 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import TitleDesignText from '../common/TitleDesignText';
 import SelectButton from '../common/SelectButton';
+import { useRouter } from 'next/navigation';
 
 const LandingSection = () => {
+	const router = useRouter();
 	return (
 		<Wrapper>
 			<MainWrapper>
@@ -14,12 +16,12 @@ const LandingSection = () => {
 					<TitleDesignText text="학교 앞 탕후루" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={5} />
 				</TitleWrapper>
 				<ImgWrapper>
-					<Image src="/img/landing.png" alt="" width={350} height={520} />
+					<StyledImage src="/img/landing.png" alt="" fill priority />
 				</ImgWrapper>
-				<BtnWrapper>
+				<BtnWrapper onClick={()=>{router.push('testHuru?type=1')}}>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 1" />
 				</BtnWrapper>
-				<BtnWrapper2>
+				<BtnWrapper2 onClick={()=>{router.push('testHuru?type=2')}}>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 2" />
 				</BtnWrapper2>
 				<Footer>지금까지 10000명이 참여했어요!!</Footer>
@@ -51,11 +53,13 @@ const MainWrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 3rem;
+	top: 3rem;
 `;
 
 const SubTitle = styled.div`
@@ -68,41 +72,50 @@ const SubTitle = styled.div`
 	font-weight: 400;
 	line-height: normal;
 	letter-spacing: 1.756px;
-	margin-top: 2.5rem;
-	margin-bottom: 2.5rem;
-	top: 15px;
+	margin-bottom: 1rem;
+`;
+
+const StyledImage = styled(Image)`
+	position: relative !important;
+	height: unset !important;
+	object-fit: cover;
 `;
 
 const ImgWrapper = styled.div`
 	position: relative;
-	height: 446px;
-	bottom: 25px;
+	width: 70%;
+	max-height: 446px;
+	@media (max-width: 490px) {
+		width: 80%;
+	}
 `;
 
 const BtnWrapper = styled.div`
-	width: 100%;
+	width: 80%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	bottom: 50px;
+	bottom: 70px;
+	border-radius: 35.625px;
 `;
 
 const BtnWrapper2 = styled.div`
-	width: 100%;
+	width: 80%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	bottom: 40px;
+	bottom: 60px;
 `;
 
 const Footer = styled.div`
 	background-color: #434343;
 	display: flex;
-	position: relative;
+	position: fixed;
+	max-width: 490px;
 	width: 100%;
 	height: 50px;
 	justify-content: center;
@@ -110,9 +123,9 @@ const Footer = styled.div`
 	flex-shrink: 0;
 	color: #efefef;
 	font-family: 'DNF Bit Bit v2';
-	font-size: 14px;
+	font-size: 1.75rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	bottom: 23px;
+	bottom: 0px;
 `;

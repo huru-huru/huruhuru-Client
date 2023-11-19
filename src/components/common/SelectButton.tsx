@@ -29,7 +29,7 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 80%;
+	width: 100%;
 	height: 5.2rem;
 	border-radius: 35.625px;
 	border: 1.187px solid #646464;
@@ -44,7 +44,7 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number }>`
 
 const ShadowBox = styled.div`
 	position: relative;
-	width: 80%;
+	width: 100%;
 	height: 5.2rem;
 	border-radius: 35.625px;
 	background: #646464;
