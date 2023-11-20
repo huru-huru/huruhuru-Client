@@ -40,5 +40,4 @@ const HeaderWrap = styled.div`
 	font-family: NeoDunggeunmo Pro;
 	font-size: 2.38rem;
 	font-weight: 400;
-	background-color: aliceblue;
 `;
