@@ -25,30 +25,8 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 	const { fruit, progress } = props;
 
 	const getCount = () => {
-		switch (progress) {
-			case 0:
-				return 5;
-			case 1:
-				return 4;
-			case 2:
-				return 4;
-			case 3:
-				return 3;
-			case 4:
-				return 3;
-			case 5:
-				return 2;
-			case 6:
-				return 2;
-			case 7:
-				return 1;
-			case 8:
-				return 1;
-			case 9:
-				return 0;
-			default:
-				return 0;
-		}
+		const count = 5 - (progress / 2)
+		return count;
 	};
 
 	const renderMissionComponent = () => {
@@ -68,9 +46,11 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 							</div>
 						</div>
 						{Array.from({ length: fruitCount }).map((_, index) => (
-							<div key={index} className="st">
-								<StyledImage src="/img/strawberry.png" alt="진행도 막대" fill priority />
-							</div>
+							<>
+								<div key={index} className="st">
+									<StyledImage src="/img/strawberry.png" alt="진행도 막대" fill priority />
+								</div>
+							</>
 						))}
 						{progress % 2 === 1 && (
 							<div className="st">
@@ -96,7 +76,9 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 	return (
 		<>
 			{renderMissionComponent()}
-			<BiteText>탕후루 <span className='bold'>{ProgressLabels[progress]} </span>입</BiteText>
+			<BiteText>
+				탕후루 <span className="bold">{ProgressLabels[progress]} </span>입
+			</BiteText>
 		</>
 	);
 };
@@ -158,8 +140,8 @@ const BiteText = styled.span`
 	font-family: DNF Bit Bit v2;
 	font-size: 2.16rem;
 	font-weight: 400;
-    margin-top: 3rem;
-    .bold{
-        color: #FC615E;
-    }
+	margin-top: 3rem;
+	.bold {
+		color: #fc615e;
+	}
 `;
