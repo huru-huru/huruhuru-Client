@@ -33,7 +33,7 @@ const Test1Main = () => {
 		<Wrapper $bg={background}>
 			<TestHeader fruit={selectType} />
 			<ProgressBar fruit={selectType} progress={progress} />
-
+			<QuestionSection>
 			<div className="question">{currentQuestion?.question}</div>
 			<QuestionImg>
 				<img src={currentQuestion?.image} />
@@ -68,6 +68,7 @@ const Test1Main = () => {
 					text={currentQuestion?.answer[2].text}
 				/>
 			</BtnWrapper>
+			</QuestionSection>
 		</Wrapper>
 	);
 };
@@ -79,6 +80,7 @@ const Wrapper = styled.div<{ $bg: string }>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	min-height: 100vh;
 	height: 100%;
 	background: ${(props) => props.$bg};
@@ -116,7 +118,7 @@ const BtnWrapper = styled.div`
 	justify-content: space-evenly;
 	align-items: center;
 	border-radius: 35.625px;
-	margin-bottom: 1dvb;
+	margin-bottom: 1rem;
 `;
 
 const StyledImage = styled(Image)`
@@ -124,3 +126,12 @@ const StyledImage = styled(Image)`
 	height: unset !important;
 	object-fit: cover;
 `;
+
+const QuestionSection = styled.div`
+	min-height: 70vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+`
