@@ -18,10 +18,10 @@ const LandingSection = () => {
 				<ImgWrapper>
 					<StyledImage src="/img/landing.png" alt="" fill priority />
 				</ImgWrapper>
-				<BtnWrapper onClick={()=>{router.push('testHuru?type=1')}}>
+				<BtnWrapper onClick={()=>{router.push('/intro?type=1')}}>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 1" />
 				</BtnWrapper>
-				<BtnWrapper2 onClick={()=>{router.push('testHuru?type=2')}}>
+				<BtnWrapper2 onClick={()=>{router.push('/intro?type=2')}}>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 2" />
 				</BtnWrapper2>
 				<Footer>지금까지 10000명이 참여했어요!!</Footer>

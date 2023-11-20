@@ -1,4 +1,3 @@
-import FontTest from '@/components/FontTest';
 import LandingSection from '@/components/landing/Landing';
 import { Metadata } from 'next';
 
