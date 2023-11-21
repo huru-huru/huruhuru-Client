@@ -7,7 +7,7 @@ type ModalProps = {
 	goTest: () => void;
 };
 
-const Signup = ({ closeModal, goTest }: ModalProps) => {
+const Login = ({ closeModal, goTest }: ModalProps) => {
 	const close = () => {
 		closeModal();
 	};
@@ -22,13 +22,14 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 			<Wrapper>
 				<ModalSection>
 					<CloseButton onClick={close}>X</CloseButton>
-					<SignupText>회원가입</SignupText>
-					<Text>어서 최고점에 도전해보라구!</Text>
+					<LoginText>로그인</LoginText>
+					<Text>이번엔 저번 기록을 깨보자구!!</Text>
 					<ImageWrapper>
-						<StyledImage src={'/img/pineapple1.png'} alt={'딸기'} fill priority />
+						<StyledImage src={'/img/strawberry2.png'} alt={'딸기'} fill priority />
 					</ImageWrapper>
 					<Input1 placeholder="닉네임을 입력해주세요" />
 					<Input1 type="password" placeholder="비밀번호를 입력해주세요" />
+					<FindPassWord>비밀번호를 잊어버리셨나요?</FindPassWord>
 				</ModalSection>
 				<BtnWrapper onClick={go}>
 					<SelectButton
@@ -41,7 +42,7 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 	);
 };
 
-export default Signup;
+export default Login;
 
 const Shadow = styled.div`
 	position: fixed;
@@ -51,7 +52,6 @@ const Shadow = styled.div`
 	z-index: 2;
 	cursor: pointer;
 `;
-
 const Wrapper = styled.div`
 	position: fixed;
 	width: 50%;
@@ -76,7 +76,7 @@ const CloseButton = styled.button`
 	cursor: pointer;
 `;
 
-const SignupText = styled.div`
+const LoginText = styled.div`
 	color: #171717;
 	position: relative;
 	text-align: center;
@@ -86,7 +86,7 @@ const SignupText = styled.div`
 	font-weight: 500;
 	line-height: normal;
 	letter-spacing: 1.756px;
-	margin-bottom: 2rem;
+	bottom: 1rem;
 `;
 
 const Text = styled.div`
@@ -98,8 +98,45 @@ const Text = styled.div`
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
-	letter-spacing: 1.756px;
 	bottom: 0.3rem;
+	letter-spacing: 0.2195rem;
+`;
+
+const FindPassWord = styled.div`
+	color: #999;
+	position: relative;
+	text-align: center;
+	font-family: 'SKYBORI';
+	font-size: 1.3rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	top: 2rem;
+	letter-spacing: 1.756px;
+	border-bottom: 2px solid #999;
+`;
+
+const Btn = styled.div`
+	width: 320px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 6.5%;
+	height: 52px;
+	background-color: #ffd5d5;
+	color: black;
+	border-radius: 30px;
+	background: linear-gradient(180deg, #c5e9ff 0%, #6bda01 100%);
+	font-size: 2.3rem;
+	font-weight: 600;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+`;
+
+const Title = styled.div`
+	font-size: 30px;
+	font-weight: bold;
+	color: var(--dark-gray, #585858);
 `;
 
 const ModalSection = styled.div`
@@ -119,15 +156,15 @@ const ModalSection = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-	width: 80%;
+	width: 52%;
 	height: 50%;
-	margin-top: 5rem;
 `;
 
 const StyledImage = styled(Image)`
 	position: relative !important;
 	height: unset !important;
 	object-fit: cover;
+	margin-top: 1.9rem;
 `;
 
 const Input1 = styled.input`
