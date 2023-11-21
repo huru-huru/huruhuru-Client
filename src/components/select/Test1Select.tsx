@@ -64,7 +64,7 @@ const Test1Select = () => {
 					}}
 				>
 					<ImageWrapper>
-						<StyledImage src="/img/pineapple.png" alt={'오렌지'} fill priority />
+						<StyledImage src="/img/pineapple1.png" alt={'오렌지'} fill priority />
 					</ImageWrapper>
 					<SelectButton bgColor="linear-gradient(0deg, #F3D722 0%, #FFF4A2 87.5%);" text="게임" />
 				</BtnWrapper>
