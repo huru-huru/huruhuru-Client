@@ -24,6 +24,12 @@ const Test1Main = () => {
 			? testColors.SHINE
 			: selectType === FRUITS.BLACK
 			? testColors.BLACK
+			: selectType === FRUITS.TOMATO
+			? testColors.TOMATO
+			: selectType === FRUITS.ORANGE
+			? testColors.ORANGE
+			: selectType === FRUITS.FINEAPPLE
+			? testColors.FINEAPPLE
 			: testColors.DEFAULT;
 
 	useEffect(() => {

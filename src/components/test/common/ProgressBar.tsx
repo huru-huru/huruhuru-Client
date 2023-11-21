@@ -13,13 +13,19 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 	const { fruit, progress } = props;
 
 	const testcolors =
-		fruit === FRUITS.STRAWBERRY
-			? testColors.STRAWBERRY
-			: fruit === FRUITS.SHINE
-			? testColors.SHINE
-			: fruit === FRUITS.BLACK
-			? testColors.BLACK
-			: testColors.DEFAULT;
+	fruit === FRUITS.STRAWBERRY
+	? testColors.STRAWBERRY
+	: fruit === FRUITS.SHINE
+	? testColors.SHINE
+	: fruit === FRUITS.BLACK
+	? testColors.BLACK
+	: fruit === FRUITS.TOMATO
+	? testColors.TOMATO
+	: fruit === FRUITS.ORANGE
+	? testColors.ORANGE
+	: fruit === FRUITS.FINEAPPLE
+	? testColors.FINEAPPLE
+	: testColors.DEFAULT;
 
 	const getCount = () => {
 		const count = 5 - progress / 2;
@@ -81,11 +87,56 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 					</>
 				);
 			case FRUITS.FINEAPPLE:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="st">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="st">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			case FRUITS.ORANGE:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="st">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="st">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			case FRUITS.TOMATO:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="st">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="st">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			default:
 				return <div>테스트가 존재하지 않습니다</div>;
 		}
