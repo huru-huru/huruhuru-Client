@@ -26,12 +26,21 @@ const Result2 = () => {
 			: selectType === FRUITS.FINEAPPLE
 			? resultColors.FINEAPPLE
 			: resultColors.DEFAULT;
+
+	const handleClick = (props: string) => {
+		router.push(`${props}`);
+	};
+
 	return (
-		<Wrapper $bg={resultcolor.bg}>
+		<Wrapper $bg={resultcolor.bg} $bordercolor={resultcolor.border}>
 			<TitleDesignText text="당신이 깨뜨린" bgColor={resultcolor.title} size={3.6} />
 			<TitleDesignText text="탕후루의 개수는?" bgColor={resultcolor.title} size={4.5} />
 			<div className="fruit-img">
 				<StyledImage src={`/img/result2fruit${0}.png`} alt="결과 과일" fill priority />
+				<div className="count">
+					<div className="text1">8</div>
+					<div className="text2">/ 10개</div>
+				</div>
 			</div>
 			<ResultBox $bgcolor={resultcolor.btnbg} $color={resultcolor.textcolor} $bordercolor={resultcolor.border}>
 				<div className="box-top">
@@ -40,33 +49,86 @@ const Result2 = () => {
 				</div>
 
 				<div className="box">
-					<div className="text1">
-						{`아웅 >< 탕후루 맛있다!`}
-						<br />
-						{`내일 또 먹자~`}
-					</div>
 					<Info>
-						<Circle />
-						<div className="info">탕후루의 맛을 제대로 아는 당신😋</div>
+						<div className="text1">지금까지 내가 깨트린 탕후루 개수</div>
+						<div className="crush-count">48</div>
 					</Info>
+					<div className="line" />
 					<Info>
-						<Circle />
-						<div className="info">혹시 마라탕-탕후루의 조합을 좋아하는지!</div>
-					</Info>
-					<Info>
-						<Circle />
-						<div className="info">이런 공감 설명 문구 조금 넣으면 어떠신지!</div>
-					</Info>
-					<Info>
-						<Circle />
-						<div className="info">아 힘들다</div>
+						<div className="text1">현재 내 순위는 10000명 중</div>
+						<div className="total-count">238</div>
 					</Info>
 				</div>
 			</ResultBox>
-			<Btn1 $btncolor={resultcolor.btnbg} $color={resultcolor.textcolor} $bordercolor={resultcolor.border}>
+			<ResultDetail>
+				<CircleGroup>
+					<div className="circle">
+						<span className="result">
+							<span className="bold">8</span>/10
+						</span>
+					</div>
+					<div>학교</div>
+				</CircleGroup>
+				<CircleGroup>
+					<div className="circle">
+						<span className="result">
+							<span className="bold">8</span>/10
+						</span>
+					</div>
+					<div>TV/연예</div>
+				</CircleGroup>
+				<CircleGroup>
+					<div className="circle">
+						<span className="result">
+							<span className="bold">8</span>/10
+						</span>
+					</div>
+					<div>문구점</div>
+				</CircleGroup>
+			</ResultDetail>
+			<ResultDetail>
+				<CircleGroup>
+					<div className="circle">
+						<span className="result">
+							<span className="bold">8</span>/10
+						</span>
+					</div>
+					<div>음식</div>
+				</CircleGroup>
+				<CircleGroup>
+					<div className="circle">
+						<span className="result">
+							<span className="bold">8</span>/10
+						</span>
+					</div>
+					<div>게임</div>
+				</CircleGroup>
+				<CircleGroup>
+					<div className="circle">
+						<span className="result">
+							<span className="bold">8</span>/10
+						</span>
+					</div>
+					<div>의류/생활</div>
+				</CircleGroup>
+			</ResultDetail>
+			<Btn1
+				onClick={() => {
+					handleClick('/select?type=2');
+				}}
+				$btncolor={resultcolor.btnbg}
+				$color={resultcolor.textcolor}
+				$bordercolor={resultcolor.border}
+			>
 				다른 탕후루도 맛보기
 			</Btn1>
-			<Btn2>테스트1도 하러가기</Btn2>
+			<Btn2
+				onClick={() => {
+					handleClick('/');
+				}}
+			>
+				테스트1도 하러가기
+			</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
 				<ShareBtnGroup></ShareBtnGroup>
@@ -75,13 +137,16 @@ const Result2 = () => {
 				<Title>탕후루 친구랑 같이 먹자!</Title>
 				<div className="sub">친구들에게 테스트 공유하기</div>
 			</TestShare>
+			<Ranking>
+				<Title>전체 랭킹</Title>
+			</Ranking>
 		</Wrapper>
 	);
 };
 
 export default Result2;
 
-const Wrapper = styled.div<{ $bg: string }>`
+const Wrapper = styled.div<{ $bg: string;  $bordercolor:string }>`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -95,12 +160,37 @@ const Wrapper = styled.div<{ $bg: string }>`
 	.fruit-img {
 		margin-top: 3.61088rem;
 		width: 60%;
+		position: relative;
+	}
+	.count{
+		width: 60%;
+		position: absolute;
+		top: 74%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		width: 100%;
+	}
+	.text1 {
+		color: ${(props) => props.$bordercolor};
+		text-align: center;
+		font-family: DNF Bit Bit v2;
+		font-size: 5.78575rem;
+		font-weight: 400;
+		margin-bottom: -3%;
+	}
+	.text2 {
+		color: #919191;
+		font-family: DNF Bit Bit v2;
+		font-size: 2.18925rem;
+		font-weight: 400;
 	}
 `;
 
 const StyledImage = styled(Image)`
 	position: relative !important;
 	height: unset !important;
+	size: unset !important;
 	object-fit: cover;
 `;
 
@@ -117,7 +207,7 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		background: ${(props) => props.$bgcolor};
 		color: ${(props) => props.$color};
 		color: #fff;
-		color: #FFF;
+		color: #fff;
 		text-align: center;
 		font-family: SKYBORI;
 		font-size: 2rem;
@@ -130,23 +220,31 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		margin-top: -6%;
 	}
 	.box {
-		width: 70%;
+		width: 80%;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-around;
 		border-radius: 1.25rem;
 		border: 2px solid ${(props) => props.$bordercolor};
 		background: #fff;
-		padding: 4.75rem 3rem;
+		padding: 3rem 2rem;
+		overflow: hidden;
 	}
 	.text1 {
 		color: var(--black, #171717);
 		text-align: center;
 		font-family: SKYBORI;
-		font-size: 2.5rem;
+		font-size: 2.25rem;
+		font-style: normal;
 		font-weight: 400;
-		margin-bottom: 3.12rem;
+		word-break: keep-all;
+		margin-bottom: 1rem;
+	}
+	.line {
+		border-radius: 1.25rem;
+		background: ${(props) => props.$bordercolor};
+		width: 1px;
+		height: 10rem;
 	}
 	.box-top {
 		width: 60%;
@@ -157,11 +255,27 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		position: relative;
 		margin-bottom: -5%;
 	}
+	.crush-count {
+		color: ${(props) => props.$bordercolor};
+		text-align: center;
+		font-family: DNF Bit Bit v2;
+		font-size: 4rem;
+		font-style: normal;
+		font-weight: 400;
+	}
+	.total-count {
+		color: #4bd8cb;
+		text-align: center;
+		font-family: DNF Bit Bit v2;
+		font-size: 4rem;
+		font-weight: 400;
+	}
 `;
 
 const Info = styled.div`
-	width: 90%;
+	width: 40%;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	padding-bottom: 1rem;
 	.info {
@@ -171,12 +285,6 @@ const Info = styled.div`
 		font-weight: 400;
 		padding-left: 1rem;
 	}
-`;
-const Circle = styled.div`
-	width: 0.5rem;
-	height: 0.5rem;
-	background-color: #6f6f6f;
-	border-radius: 50%;
 `;
 
 const Btn1 = styled.div<{ $btncolor: string; $bordercolor: string; $color: string }>`
@@ -194,8 +302,9 @@ const Btn1 = styled.div<{ $btncolor: string; $bordercolor: string; $color: strin
 	font-family: SKYBORI;
 	font-size: 2.5rem;
 	font-weight: 400;
-	margin-top: 3rem;
+	margin-top: 5rem;
 	margin-bottom: 2rem;
+	cursor: pointer;
 `;
 const Btn2 = styled.div`
 	display: flex;
@@ -211,6 +320,7 @@ const Btn2 = styled.div`
 	font-family: SKYBORI;
 	font-size: 2.5rem;
 	font-weight: 400;
+	cursor: pointer;
 `;
 
 const ResultShare = styled.div`
@@ -247,4 +357,47 @@ const Title = styled.div`
 
 const ShareBtnGroup = styled.div`
 	display: flex;
+`;
+
+const ResultDetail = styled.div`
+	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+const CircleGroup = styled.div`
+	margin-top: 3rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #7a7a7a;
+	font-family: SKYBORI;
+	font-size: 2.25rem;
+	font-weight: 400;
+	.circle {
+		width: 50%;
+		padding-bottom: 50%;
+		border-radius: 50%;
+		position: relative;
+		background-color: #fff;
+		stroke-width: 1px;
+		stroke: #eee;
+	}
+	.bold {
+		color: #f5655e;
+	}
+	.result {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		width: 100%;
+	}
+`;
+
+const Ranking = styled.div`
+	margin-top: 5rem;
 `;

@@ -26,6 +26,11 @@ const Result1 = () => {
 			: selectType === FRUITS.FINEAPPLE
 			? resultColors.FINEAPPLE
 			: resultColors.DEFAULT;
+
+	const handleClick = (props: string) => {
+		router.push(`${props}`);
+	};
+
 	return (
 		<Wrapper $bg={resultcolor.bg}>
 			<TitleDesignText text="당신의 탕후루 시절은?" bgColor={resultcolor.title} size={3.6} />
@@ -62,10 +67,17 @@ const Result1 = () => {
 					</Info>
 				</div>
 			</ResultBox>
-			<Btn1 $btncolor={resultcolor.btnbg} $color={resultcolor.textcolor} $bordercolor={resultcolor.border}>
+			<Btn1
+				onClick={() => {
+					handleClick('/select?type=1');
+				}}
+				$btncolor={resultcolor.btnbg}
+				$color={resultcolor.textcolor}
+				$bordercolor={resultcolor.border}
+			>
 				다른 탕후루도 맛보기
 			</Btn1>
-			<Btn2>테스트2도 하러가기</Btn2>
+			<Btn2 onClick={()=>{handleClick('/')}}>테스트2도 하러가기</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
 				<ShareBtnGroup></ShareBtnGroup>
@@ -193,6 +205,7 @@ const Btn1 = styled.div<{ $btncolor: string; $bordercolor: string; $color: strin
 	font-weight: 400;
 	margin-top: 3rem;
 	margin-bottom: 2rem;
+	cursor: pointer;
 `;
 const Btn2 = styled.div`
 	display: flex;
@@ -208,6 +221,7 @@ const Btn2 = styled.div`
 	font-family: SKYBORI;
 	font-size: 2.5rem;
 	font-weight: 400;
+	cursor: pointer;
 `;
 
 const ResultShare = styled.div`
