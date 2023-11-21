@@ -18,7 +18,8 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 
 	return (
 		<>
-			<Wrapper onClick={close}>
+			<Shadow onClick={close} />
+			<Wrapper>
 				<ModalSection>
 					<CloseButton onClick={close}>X</CloseButton>
 					<SignupText>회원가입</SignupText>
@@ -42,10 +43,17 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 
 export default Signup;
 
-const Wrapper = styled.div`
+const Shadow = styled.div`
 	position: fixed;
 	width: 100%;
 	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 2;
+	cursor: pointer;
+`;
+
+const Wrapper = styled.div`
+	position: fixed;
 	display: flex;
 	background-color: rgba(0, 0, 0, 0.7);
 	flex-direction: column;

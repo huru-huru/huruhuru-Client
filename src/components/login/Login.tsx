@@ -18,7 +18,8 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 
 	return (
 		<>
-			<Wrapper onClick={close}>
+			<Shadow onClick={close} />
+			<Wrapper>
 				<ModalSection>
 					<CloseButton onClick={close}>X</CloseButton>
 					<LoginText>로그인</LoginText>
@@ -43,16 +44,21 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 
 export default Login;
 
-const Wrapper = styled.div`
+const Shadow = styled.div`
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	display: flex;
 	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 2;
+	cursor: pointer;
+`;
+
+const Wrapper = styled.div`
+	position: fixed;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
 	z-index: 3;
 `;
 
