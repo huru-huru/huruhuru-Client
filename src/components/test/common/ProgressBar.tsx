@@ -13,19 +13,19 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 	const { fruit, progress } = props;
 
 	const testcolors =
-	fruit === FRUITS.STRAWBERRY
-	? testColors.STRAWBERRY
-	: fruit === FRUITS.SHINE
-	? testColors.SHINE
-	: fruit === FRUITS.BLACK
-	? testColors.BLACK
-	: fruit === FRUITS.TOMATO
-	? testColors.TOMATO
-	: fruit === FRUITS.ORANGE
-	? testColors.ORANGE
-	: fruit === FRUITS.FINEAPPLE
-	? testColors.FINEAPPLE
-	: testColors.DEFAULT;
+		fruit === FRUITS.STRAWBERRY
+			? testColors.STRAWBERRY
+			: fruit === FRUITS.SHINE
+			? testColors.SHINE
+			: fruit === FRUITS.BLACK
+			? testColors.BLACK
+			: fruit === FRUITS.TOMATO
+			? testColors.TOMATO
+			: fruit === FRUITS.ORANGE
+			? testColors.ORANGE
+			: fruit === FRUITS.FINEAPPLE
+			? testColors.FINEAPPLE
+			: testColors.DEFAULT;
 
 	const getCount = () => {
 		const count = 5 - progress / 2;
@@ -91,13 +91,13 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 					<>
 						{Array.from({ length: fruitCount }).map((_, index) => (
 							<>
-								<div key={index} className="st">
+								<div key={index} className="fi">
 									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
 								</div>
 							</>
 						))}
 						{progress % 2 === 1 && (
-							<div className="st">
+							<div className="fi">
 								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
 							</div>
 						)}
@@ -108,13 +108,13 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 					<>
 						{Array.from({ length: fruitCount }).map((_, index) => (
 							<>
-								<div key={index} className="st">
+								<div key={index} className="or">
 									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
 								</div>
 							</>
 						))}
 						{progress % 2 === 1 && (
-							<div className="st">
+							<div className="or">
 								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
 							</div>
 						)}
@@ -200,10 +200,20 @@ const ProgressWrap = styled.div<{ $bold: string }>`
 		margin-left: -5%;
 		margin-right: 3%;
 	}
+	.fi {
+		width: 17%;
+		margin-left: -5%;
+		margin-right: 1%;
+	}
 	.bl {
 		width: 15%;
 		margin-left: 2%;
 		margin-right: -10%;
+	}
+	.or{
+		width: 17%;
+		margin-left: -5%;
+		margin-right: 1%;
 	}
 	.text1 {
 		color: ${(props) => props.$bold};
