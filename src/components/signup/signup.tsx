@@ -119,7 +119,7 @@ const ModalSection = styled.div`
 const ImageWrapper = styled.div`
 	width: 80%;
 	height: 50%;
-	margin-top: 5rem;
+	margin-top: 7rem;
 `;
 
 const StyledImage = styled(Image)`
