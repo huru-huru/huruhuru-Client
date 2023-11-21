@@ -1,10 +1,10 @@
-import Test2Main from '@/components/test/crush/Test2Main';
+import Result2 from '@/components/test/crush/Result2';
 import React from 'react';
 
 const page = () => {
 	return (
 		<>
-			<Test2Main />
+			<Result2 />
 		</>
 	);
 };
