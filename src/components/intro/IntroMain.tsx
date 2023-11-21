@@ -71,7 +71,7 @@ const IntroMain = () => {
 				</TitleWrapper>
 				{/* <BtnWrapper onClick={() => handleClick(INTRO_BTN.LOGIN)}> */}
 				<ImageWrapper>
-					<StyledImage src="/img/orange.png" alt={'오렌지'} fill priority />
+					<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />
 				</ImageWrapper>
 				<BtnWrapper onClick={goLogin}>
 					<SelectButton
