@@ -16,7 +16,7 @@ const LandingSection = () => {
 					<TitleDesignText text="학교 앞 탕후루" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={5} />
 				</TitleWrapper>
 				<ImgWrapper>
-					<StyledImage src="/img/landing.png" alt="" fill priority />
+					<StyledImage src="/img/landing.png" alt="랜딩 이미지" fill priority />
 				</ImgWrapper>
 				<BtnWrapper onClick={()=>{router.push('/intro?type=1')}}>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 1" />
@@ -128,4 +128,5 @@ const Footer = styled.div`
 	font-weight: 400;
 	line-height: normal;
 	bottom: 0px;
+	z-index: 3;
 `;

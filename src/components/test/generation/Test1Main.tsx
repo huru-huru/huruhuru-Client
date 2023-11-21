@@ -9,6 +9,7 @@ import { QuestionData } from '@/types/request';
 import { test1sample } from '@/utils/dummydata';
 import Image from 'next/image';
 import SelectButton from '@/components/common/SelectButton';
+import { testColors } from '@/utils/constant/colorConstants';
 
 const Test1Main = () => {
 	const router = useRouter();
@@ -16,58 +17,48 @@ const Test1Main = () => {
 	const [progress, setProgress] = useState(0);
 	const [currentQuestion, setQuestion] = useState<QuestionData>();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
-	const background =
+	const testcolors =
 		selectType === FRUITS.STRAWBERRY
-			? '#FFF0EE;'
+			? testColors.STRAWBERRY
 			: selectType === FRUITS.SHINE
-			? 'linear-gradient(180deg, rgba(180, 197, 37, 0.20) 0.06%, rgba(235, 243, 152, 0.20) 23.8%), #F2F8B7;'
+			? testColors.SHINE
 			: selectType === FRUITS.BLACK
-			? 'linear-gradient(180deg, rgba(108, 66, 90, 0.20) 0.06%, rgba(216, 186, 198, 0.20) 23.8%, rgba(217, 187, 199, 0.20) 23.8%), #FEECF4'
-			: 'white';
+			? testColors.BLACK
+			: selectType === FRUITS.TOMATO
+			? testColors.TOMATO
+			: selectType === FRUITS.ORANGE
+			? testColors.ORANGE
+			: selectType === FRUITS.FINEAPPLE
+			? testColors.FINEAPPLE
+			: testColors.DEFAULT;
 
 	useEffect(() => {
-		setQuestion(test1sample[progress]);
-	}, [progress]);
+		if (progress === 10) {
+			router.push(`generationTest/result?fruits=${selectType}`);
+		} else {
+			setQuestion(test1sample[progress]);
+		}
+	}, [progress, router, selectType]);
+
+	const handleButtonClick = () => {
+		setProgress(progress + 1);
+	};
 
 	return (
-		<Wrapper $bg={background}>
+		<Wrapper $bg={testcolors.bg}>
 			<TestHeader fruit={selectType} />
 			<ProgressBar fruit={selectType} progress={progress} />
+
 			<QuestionSection>
-			<div className="question">{currentQuestion?.question}</div>
-			<QuestionImg>
-				<img src={currentQuestion?.image} />
-			</QuestionImg>
-			<BtnWrapper
-				onClick={() => {
-					setProgress(progress + 1);
-				}}
-			>
-				<SelectButton
-					bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%)"
-					text={currentQuestion?.answer[0].text}
-				/>
-			</BtnWrapper>
-			<BtnWrapper
-				onClick={() => {
-					setProgress(progress + 1);
-				}}
-			>
-				<SelectButton
-					bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%)"
-					text={currentQuestion?.answer[1].text}
-				/>
-			</BtnWrapper>
-			<BtnWrapper
-				onClick={() => {
-					setProgress(progress + 1);
-				}}
-			>
-				<SelectButton
-					bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%)"
-					text={currentQuestion?.answer[2].text}
-				/>
-			</BtnWrapper>
+				<div className="question">{currentQuestion?.question}</div>
+				<QuestionImg>
+					<img src={currentQuestion?.image} />
+				</QuestionImg>
+				{currentQuestion?.answer.map((answerOption: any, index: number) => (
+					<BtnWrapper key={index} onClick={handleButtonClick}>
+						<SelectButton bgColor={testcolors.btnbg} text={answerOption.text} textColor={testcolors.btntext} />
+					</BtnWrapper>
+				))}
 			</QuestionSection>
 		</Wrapper>
 	);
@@ -134,4 +125,4 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-`
+`;

@@ -1,4 +1,5 @@
-import { FRUITS } from '@/utils/constant';
+import { FRUITS, ProgressLabels } from '@/utils/constant';
+import { testColors } from '@/utils/constant/colorConstants';
 import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
@@ -8,102 +9,163 @@ type ProgressBarPropsType = {
 	progress: number;
 };
 
-enum ProgressLabels {
-	'한',
-	'두',
-	'세',
-	'네',
-	'다섯',
-	'여섯',
-	'일곱',
-	'여덟',
-	'아홉',
-	'마지막',
-}
-
 const ProgressBar = (props: ProgressBarPropsType) => {
 	const { fruit, progress } = props;
 
+	const testcolors =
+		fruit === FRUITS.STRAWBERRY
+			? testColors.STRAWBERRY
+			: fruit === FRUITS.SHINE
+			? testColors.SHINE
+			: fruit === FRUITS.BLACK
+			? testColors.BLACK
+			: fruit === FRUITS.TOMATO
+			? testColors.TOMATO
+			: fruit === FRUITS.ORANGE
+			? testColors.ORANGE
+			: fruit === FRUITS.FINEAPPLE
+			? testColors.FINEAPPLE
+			: testColors.DEFAULT;
+
 	const getCount = () => {
-		switch (progress) {
-			case 0:
-				return 5;
-			case 1:
-				return 4;
-			case 2:
-				return 4;
-			case 3:
-				return 3;
-			case 4:
-				return 3;
-			case 5:
-				return 2;
-			case 6:
-				return 2;
-			case 7:
-				return 1;
-			case 8:
-				return 1;
-			case 9:
-				return 0;
-			default:
-				return 0;
-		}
+		const count = 5 - progress / 2;
+		return count;
 	};
 
 	const renderMissionComponent = () => {
 		const fruitCount = getCount();
-		switch (props.fruit) {
+		switch (fruit) {
 			case FRUITS.STRAWBERRY:
 				return (
-					<ProgressWrap>
-						<div className="stick">
-							<StyledImage src="/img/stick.png" alt="진행도 막대" fill priority />
-						</div>
-						<div className="cup">
-							<StyledImage src="/img/papercup.png" alt="진행도 막대" fill priority />
-							<div className="count">
-								<div className="text1">{progress + 1}</div>
-								<div className="text2">/ 10개</div>
-							</div>
-						</div>
+					<>
 						{Array.from({ length: fruitCount }).map((_, index) => (
-							<div key={index} className="st">
-								<StyledImage src="/img/strawberry.png" alt="진행도 막대" fill priority />
-							</div>
+							<>
+								<div key={index} className="st">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
 						))}
 						{progress % 2 === 1 && (
 							<div className="st">
-								<StyledImage src="/img/strawberryhalf.png" alt="진행도 막대" fill priority />
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
 							</div>
 						)}
-					</ProgressWrap>
+					</>
 				);
 			case FRUITS.SHINE:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="sh">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="sh">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			case FRUITS.BLACK:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="bl">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="bl">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			case FRUITS.FINEAPPLE:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="fi">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="fi">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			case FRUITS.ORANGE:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="or">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="or">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			case FRUITS.TOMATO:
-				return <></>;
+				return (
+					<>
+						{Array.from({ length: fruitCount }).map((_, index) => (
+							<>
+								<div key={index} className="st">
+									<StyledImage src={`/img/fruit${fruit}.png`} alt="진행도 막대" fill priority />
+								</div>
+							</>
+						))}
+						{progress % 2 === 1 && (
+							<div className="st">
+								<StyledImage src={`/img/fruithalf${fruit}.png`} alt="진행도 막대" fill priority />
+							</div>
+						)}
+					</>
+				);
 			default:
 				return <div>테스트가 존재하지 않습니다</div>;
 		}
 	};
 	return (
 		<>
-			{renderMissionComponent()}
-			<BiteText>탕후루 <span className='bold'>{ProgressLabels[progress]} </span>입</BiteText>
+			<ProgressWrap $bold={testcolors.title}>
+				<div className="stick">
+					<StyledImage src="/img/stick.png" alt="진행도 막대" fill priority />
+				</div>
+				<div className="cup">
+					<StyledImage src="/img/papercup.png" alt="진행도 막대" fill priority />
+					<div className="count">
+						<div className="text1">{progress + 1}</div>
+						<div className="text2">/ 10개</div>
+					</div>
+				</div>
+				{renderMissionComponent()}
+			</ProgressWrap>
+			<BiteText $bold={testcolors.title}>
+				탕후루 <span className="bold">{ProgressLabels[progress]} </span>입
+			</BiteText>
 		</>
 	);
 };
 
 export default ProgressBar;
 
-const ProgressWrap = styled.div`
+const ProgressWrap = styled.div<{ $bold: string }>`
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -133,8 +195,28 @@ const ProgressWrap = styled.div`
 		margin-left: -5%;
 		margin-right: 3%;
 	}
+	.sh {
+		width: 15%;
+		margin-left: -5%;
+		margin-right: 3%;
+	}
+	.fi {
+		width: 17%;
+		margin-left: -5%;
+		margin-right: 1%;
+	}
+	.bl {
+		width: 15%;
+		margin-left: 2%;
+		margin-right: -10%;
+	}
+	.or{
+		width: 17%;
+		margin-left: -5%;
+		margin-right: 1%;
+	}
 	.text1 {
-		color: #fc615e;
+		color: ${(props) => props.$bold};
 		text-align: center;
 		font-family: DNF Bit Bit v2;
 		font-size: 1.733rem;
@@ -152,14 +234,13 @@ const StyledImage = styled(Image)`
 	height: unset !important;
 	object-fit: cover;
 `;
-
-const BiteText = styled.span`
+const BiteText = styled.span<{ $bold: string }>`
 	color: var(--black, #171717);
 	font-family: DNF Bit Bit v2;
 	font-size: 2.16rem;
 	font-weight: 400;
-    margin-top: 3rem;
-    .bold{
-        color: #FC615E;
-    }
+	margin-top: 3rem;
+	.bold {
+		color: ${(props) => props.$bold};
+	}
 `;
