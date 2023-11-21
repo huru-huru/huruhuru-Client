@@ -40,7 +40,7 @@ const Test1Select = () => {
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
-						handleClick(FRUITS.ORANGE);
+						handleClick(FRUITS.BLACK);
 					}}
 				>
 					<ImageWrapper>
@@ -50,7 +50,7 @@ const Test1Select = () => {
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
-						handleClick(FRUITS.BLACK);
+						handleClick(FRUITS.TOMATO);
 					}}
 				>
 					<ImageWrapper>
@@ -60,7 +60,7 @@ const Test1Select = () => {
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
-						handleClick(FRUITS.TOMATO);
+						handleClick(FRUITS.FINEAPPLE);
 					}}
 				>
 					<ImageWrapper>
@@ -70,7 +70,7 @@ const Test1Select = () => {
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
-						handleClick(FRUITS.FINEAPPLE);
+						handleClick(FRUITS.ORANGE);
 					}}
 				>
 					<ImageWrapper>
