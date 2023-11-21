@@ -24,7 +24,7 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 					<LoginText>로그인</LoginText>
 					<Text>이번엔 저번 기록을 깨보자구!!</Text>
 					<ImageWrapper>
-						<StyledImage src={'/img/strawberry2.png'} alt={'딸기'} fill priority />
+						<StyledImage src={'/img/fruit0.png'} alt={'딸기'} fill priority />
 					</ImageWrapper>
 					<Input1 placeholder="닉네임을 입력해주세요" />
 					<Input1 type="password" placeholder="비밀번호를 입력해주세요" />

@@ -24,7 +24,7 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 					<SignupText>회원가입</SignupText>
 					<Text>어서 최고점에 도전해보라구!</Text>
 					<ImageWrapper>
-						<StyledImage src={'/img/pineapple1.png'} alt={'딸기'} fill priority />
+						<StyledImage src={'/img/fruit5.png'} alt={'과일'} fill priority />
 					</ImageWrapper>
 					<Input1 placeholder="닉네임을 입력해주세요" />
 					<Input1 type="password" placeholder="비밀번호를 입력해주세요" />
