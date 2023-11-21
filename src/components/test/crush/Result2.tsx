@@ -31,11 +31,11 @@ const Result2 = () => {
 			<TitleDesignText text="당신이 깨뜨린" bgColor={resultcolor.title} size={3.6} />
 			<TitleDesignText text="탕후루의 개수는?" bgColor={resultcolor.title} size={4.5} />
 			<div className="fruit-img">
-				<StyledImage src={`/img/fruitBig${selectType}.png`} alt="결과 과일" fill priority />
+				<StyledImage src={`/img/result2fruit${0}.png`} alt="결과 과일" fill priority />
 			</div>
 			<ResultBox $bgcolor={resultcolor.btnbg} $color={resultcolor.textcolor} $bordercolor={resultcolor.border}>
 				<div className="box-top">
-					<div className="result-title">상콤발랄 10대</div>
+					<div className="result-title">내 탕후루 깨기 현황은?</div>
 					<GoTriangleDown className="icon" size="15%" color={resultcolor.btnbg} />
 				</div>
 
@@ -94,7 +94,7 @@ const Wrapper = styled.div<{ $bg: string }>`
 	padding-top: 15%;
 	.fruit-img {
 		margin-top: 3.61088rem;
-		width: 35%;
+		width: 60%;
 	}
 `;
 
@@ -117,11 +117,13 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		background: ${(props) => props.$bgcolor};
 		color: ${(props) => props.$color};
 		color: #fff;
+		color: #FFF;
 		text-align: center;
-		font-family: DNF Bit Bit v2;
-		font-size: 3rem;
+		font-family: SKYBORI;
+		font-size: 2rem;
+		font-style: normal;
 		font-weight: 400;
-		padding: 1.6rem 0rem;
+		padding: 1rem 0rem;
 	}
 	.icon {
 		position: relative;
@@ -147,13 +149,13 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		margin-bottom: 3.12rem;
 	}
 	.box-top {
-		width: 100%;
+		width: 60%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		margin-bottom: -12%;
+		margin-bottom: -5%;
 	}
 `;
 
