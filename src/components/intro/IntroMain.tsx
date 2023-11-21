@@ -3,7 +3,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 import styled from 'styled-components';
 import TitleDesignText from '../common/TitleDesignText';
-import { INTRO_BTN } from '@/utils/constant';
 import SelectButton from '../common/SelectButton';
 import Signup from '../signup/signup';
 import Image from 'next/image';
