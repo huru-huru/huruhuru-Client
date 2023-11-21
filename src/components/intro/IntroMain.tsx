@@ -20,13 +20,10 @@ const IntroMain = () => {
 	// 		router.push(`/select?type=${selectType}`);
 	// 		// 유효하지 않은 토큰이면 로그인 모달 (구현해주세요)
 	// 	} else {
-	// 		// 회원가입 모달
+	// 		setIsModalOpen(true);
 	// 	}
 	// };
 
-	const click = () => {
-		setIsModalOpen(true);
-	};
 	const renderMissionComponent = () => {
 		switch (selectType) {
 			case '1':
@@ -46,6 +43,14 @@ const IntroMain = () => {
 		setIsModalOpen(false);
 	};
 
+	const goTest = () => {
+		router.push(`/select?type=${selectType}`);
+	};
+
+	const login = () => {
+		setIsModalOpen(true);
+	};
+
 	return (
 		<>
 			<Wrapper>
@@ -54,14 +59,15 @@ const IntroMain = () => {
 					<SubTitle>이 테스트는 1970년 왕가탕후루 중앙대본점에서 시작되어...</SubTitle>
 				</TitleWrapper>
 				{/* <BtnWrapper onClick={() => handleClick(INTRO_BTN.LOGIN)}> */}
-				<BtnWrapper onClick={click}>
+				<BtnWrapper onClick={login}>
 					<SelectButton
 						bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
 						text="이 게임 한 적 있어!"
 					/>
 				</BtnWrapper>
-				<BtnSignup onClick={() => handleClick(INTRO_BTN.SIGNIN)}>이 게임 처음이야</BtnSignup>
-				{isModalOpen && <Signup closeModal={closeModal} />}
+				{/* <BtnSignup onClick={() => handleClick(INTRO_BTN.SIGNIN)}>이 게임 처음이야</BtnSignup> */}
+				<BtnSignup>이 게임 처음이야</BtnSignup>
+				{isModalOpen && <Signup closeModal={closeModal} goTest={goTest} />}
 			</Wrapper>
 		</>
 	);

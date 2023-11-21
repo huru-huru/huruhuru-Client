@@ -1,13 +1,22 @@
 import { styled } from 'styled-components';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
+import SelectButton from '../common/SelectButton';
 
 type ModalProps = {
 	closeModal: () => void;
+	goTest: () => void;
 };
 
-const Signup = ({ closeModal }: ModalProps) => {
+const Signup = ({ closeModal, goTest }: ModalProps) => {
 	const close = () => {
 		closeModal();
 	};
+
+	const go = () => {
+		goTest();
+	};
+
 	return (
 		<>
 			<Shadow onClick={close} />
@@ -15,11 +24,20 @@ const Signup = ({ closeModal }: ModalProps) => {
 				<ModalSection>
 					<CloseButton onClick={close}>X</CloseButton>
 					<Login>로그인</Login>
-					<Text>이번엔 저번 기록을 깨보자구</Text>
-					<StyledImage src={'/img/testIcon.png'} alt={'딸기'} width={10} />
+					<Text>이번엔 저번 기록을 깨보자구!!</Text>
+					<ImageWrapper>
+						<StyledImage src={'/img/testIcon.png'} alt={'딸기'} fill priority />
+					</ImageWrapper>
 					<Input1 placeholder="닉네임을 입력해주세요" />
 					<Input1 type="password" placeholder="비밀번호를 입력해주세요" />
+					<FindPassWord>비밀번호를 잊어버리셨나요?</FindPassWord>
 				</ModalSection>
+				<BtnWrapper onClick={go}>
+					<SelectButton
+						bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
+						text="이제 도전하러 가볼까?"
+					/>
+				</BtnWrapper>
 			</Wrapper>
 		</>
 	);
@@ -31,18 +49,19 @@ const Shadow = styled.div`
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 색상 */
+	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 2;
 	cursor: pointer;
 `;
 const Wrapper = styled.div`
 	position: fixed;
-	width: 25rem;
-	height: 28rem;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	bottom: 5rem;
 	z-index: 3;
 `;
 
@@ -63,11 +82,12 @@ const Login = styled.div`
 	position: relative;
 	text-align: center;
 	font-family: 'NeoDunggeunmo Pro';
-	font-size: 1.7rem;
+	font-size: 2.5rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
 	letter-spacing: 1.756px;
+	bottom: 1rem;
 `;
 
 const Text = styled.div`
@@ -75,11 +95,25 @@ const Text = styled.div`
 	position: relative;
 	text-align: center;
 	font-family: 'NeoDunggeunmo Pro';
-	font-size: 1.2rem;
+	font-size: 1.8rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	bottom: 0.3rem;
+`;
+
+const FindPassWord = styled.div`
+	color: #999;
+	position: relative;
+	text-align: center;
+	font-family: 'SKYBORI';
+	font-size: 1.7rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	top: 2rem;
 	letter-spacing: 1.756px;
+	border-bottom: 2px solid #999;
 `;
 
 const Btn = styled.div`
@@ -105,15 +139,13 @@ const Title = styled.div`
 	color: var(--dark-gray, #585858);
 `;
 
-const Image = styled.img``;
-
 const ModalSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 19.625rem;
-	height: 28.3125rem;
+	width: 30rem;
+	height: 45rem;
 	flex-shrink: 0;
 	padding: 40px 20px;
 	border-radius: 0.625rem;
@@ -123,20 +155,37 @@ const ModalSection = styled.div`
 	position: absolute;
 `;
 
+const ImageWrapper = styled.div`
+	width: 52%;
+	height: 50%;
+`;
+
 const StyledImage = styled(Image)`
-	width: 10rem;
-	height: 11rem;
-	/* object-fit: cover; */
+	position: relative !important;
+	height: unset !important;
+	object-fit: cover;
+	margin-top: 1.9rem;
 `;
 
 const Input1 = styled.input`
-	width: 19rem;
+	width: 90%;
 	color: var(--grey, #727272);
-	background: #f5f5f5;
+	background: #eae9e9;
 	font-family: 'SKYBORI';
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	font-weight: 400;
 	line-height: normal;
-	padding: 0.7rem;
+	padding: 1.5rem;
+	margin-top: 1rem;
 	border: 1px solid #f5f5f5;
+`;
+
+const BtnWrapper = styled.div`
+	width: 36rem;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	top: 33rem;
 `;
