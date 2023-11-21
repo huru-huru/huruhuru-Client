@@ -30,8 +30,10 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string 
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
-	height: 5.2rem;
+	width: 80%;
+	padding: 0.5rem 2rem;
+	min-height: 5.2rem;
+	height:fit-content;
 	border-radius: 35.625px;
 	border: 1.187px solid #646464;
 	background: ${(props) => props.$bgColor};
@@ -40,15 +42,18 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string 
 	line-height: normal;
 	font-size: ${(props) => props.$size}rem;
 	z-index: 1;
+	font-weight: 400;
 	cursor: pointer;
 `;
 
 const ShadowBox = styled.div`
 	position: relative;
-	width: 100%;
-	height: 5.2rem;
+	width: 80%;
+	padding: 0.5rem 2rem;
+	min-height: 5.2rem;
+	height:fit-content;
 	border-radius: 35.625px;
 	background: #646464;
-	margin-top: -4.9rem;
+	margin-top: -5.7rem;
 	cursor: pointer;
 `;

@@ -73,14 +73,23 @@ const IntroMain = () => {
 				<ImageWrapper>
 					<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />
 				</ImageWrapper>
-				<BtnWrapper onClick={goLogin}>
-					<SelectButton
-						bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
-						text="이 게임 한 적 있어!"
-					/>
-				</BtnWrapper>
+				{selectType === '1' ? (
+					<BtnWrapper onClick={goTest}>
+						<SelectButton
+							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
+							text="게임하러 가기!"
+						/>
+					</BtnWrapper>
+				) : (
+					<BtnWrapper onClick={goLogin}>
+						<SelectButton
+							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
+							text="이 게임 한 적 있어!"
+						/>
+					</BtnWrapper>
+				)}
 				{/* <BtnSignup onClick={() => handleClick(INTRO_BTN.SIGNIN)}>이 게임 처음이야</BtnSignup> */}
-				<BtnSignup onClick={goSignup}>이 게임 처음이야</BtnSignup>
+				{selectType === '1' ? null : <BtnSignup onClick={goSignup}>이 게임 처음이야</BtnSignup>}
 				{signupModal && <Signup closeModal={closeSignup} goTest={goTest} />}
 				{loginModal && <Login closeModal={closeLogin} goTest={goTest} />}
 			</Wrapper>

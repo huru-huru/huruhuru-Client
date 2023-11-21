@@ -56,7 +56,7 @@ const Test1Main = () => {
 				</QuestionImg>
 				{currentQuestion?.answer.map((answerOption: any, index: number) => (
 					<BtnWrapper key={index} onClick={handleButtonClick}>
-						<SelectButton bgColor={testcolors.btnbg} text={answerOption.text} textColor={testcolors.btntext} />
+						<SelectButton bgColor={testcolors.btnbg} size={1.8} text={answerOption.text} textColor={testcolors.btntext} />
 					</BtnWrapper>
 				))}
 			</QuestionSection>
