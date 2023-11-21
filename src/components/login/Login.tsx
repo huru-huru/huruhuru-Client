@@ -18,8 +18,7 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 
 	return (
 		<>
-			<Shadow onClick={close} />
-			<Wrapper>
+			<Wrapper onClick={close}>
 				<ModalSection>
 					<CloseButton onClick={close}>X</CloseButton>
 					<LoginText>로그인</LoginText>
@@ -44,23 +43,16 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 
 export default Login;
 
-const Shadow = styled.div`
+const Wrapper = styled.div`
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: 2;
-	cursor: pointer;
-`;
-const Wrapper = styled.div`
-	position: fixed;
-	width: 50%;
-	height: 60%;
 	display: flex;
+	background-color: rgba(0, 0, 0, 0.7);
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	bottom: 20rem;
+	cursor: pointer;
 	z-index: 3;
 `;
 
@@ -116,29 +108,6 @@ const FindPassWord = styled.div`
 	border-bottom: 2px solid #999;
 `;
 
-const Btn = styled.div`
-	width: 320px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 6.5%;
-	height: 52px;
-	background-color: #ffd5d5;
-	color: black;
-	border-radius: 30px;
-	background: linear-gradient(180deg, #c5e9ff 0%, #6bda01 100%);
-	font-size: 2.3rem;
-	font-weight: 600;
-	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-	cursor: pointer;
-`;
-
-const Title = styled.div`
-	font-size: 30px;
-	font-weight: bold;
-	color: var(--dark-gray, #585858);
-`;
-
 const ModalSection = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -151,7 +120,6 @@ const ModalSection = styled.div`
 	border-radius: 0.625rem;
 	background: #fdfdfd;
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-	margin-top: 3rem;
 	position: absolute;
 `;
 
@@ -187,5 +155,5 @@ const BtnWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	top: 33rem;
+	top: 32rem;
 `;
