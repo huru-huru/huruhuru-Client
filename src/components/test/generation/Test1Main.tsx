@@ -1,5 +1,5 @@
 'use client';
-import { FRUITS } from '@/utils/constant';
+import { FRUITS, ProgressLabels } from '@/utils/constant';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -9,6 +9,7 @@ import { QuestionData } from '@/types/request';
 import { test1sample } from '@/utils/dummydata';
 import Image from 'next/image';
 import SelectButton from '@/components/common/SelectButton';
+import { testBackgroundColors, testBtnTextColor, testButtonColors, testTitleBoldColor } from '@/utils/constant/colorConstants';
 
 const Test1Main = () => {
 	const router = useRouter();
@@ -18,56 +19,65 @@ const Test1Main = () => {
 	const selectType = parseInt(params.get('fruits') || '0', 10);
 	const background =
 		selectType === FRUITS.STRAWBERRY
-			? '#FFF0EE;'
+			? testBackgroundColors.STRAWBERRY
 			: selectType === FRUITS.SHINE
-			? 'linear-gradient(180deg, rgba(180, 197, 37, 0.20) 0.06%, rgba(235, 243, 152, 0.20) 23.8%), #F2F8B7;'
+			? testBackgroundColors.SHINE
 			: selectType === FRUITS.BLACK
-			? 'linear-gradient(180deg, rgba(108, 66, 90, 0.20) 0.06%, rgba(216, 186, 198, 0.20) 23.8%, rgba(217, 187, 199, 0.20) 23.8%), #FEECF4'
-			: 'white';
+			? testBackgroundColors.BLACK
+			: testBackgroundColors.DEFAULT;
+
+	const btncolor =
+		selectType === FRUITS.STRAWBERRY
+			? testButtonColors.STRAWBERRY
+			: selectType === FRUITS.SHINE
+			? testButtonColors.SHINE
+			: selectType === FRUITS.BLACK
+			? testButtonColors.BLACK
+			: testBackgroundColors.DEFAULT;
+
+	const textcolor =
+		selectType === FRUITS.STRAWBERRY
+			? testBtnTextColor.STRAWBERRY
+			: selectType === FRUITS.SHINE
+			? testBtnTextColor.SHINE
+			: selectType === FRUITS.BLACK
+			? testBtnTextColor.BLACK
+			: testBackgroundColors.DEFAULT;
+
+	const titleBoldcolor =
+		selectType === FRUITS.STRAWBERRY
+			? testTitleBoldColor.STRAWBERRY
+			: selectType === FRUITS.SHINE
+			? testTitleBoldColor.SHINE
+			: selectType === FRUITS.BLACK
+			? testTitleBoldColor.BLACK
+			: testBackgroundColors.DEFAULT;
 
 	useEffect(() => {
 		setQuestion(test1sample[progress]);
 	}, [progress]);
 
+	const handleButtonClick = () => {
+		setProgress(progress + 1);
+	};
+
 	return (
 		<Wrapper $bg={background}>
 			<TestHeader fruit={selectType} />
 			<ProgressBar fruit={selectType} progress={progress} />
+			<BiteText $bold={titleBoldcolor}>
+				탕후루 <span className="bold">{ProgressLabels[progress]} </span>입
+			</BiteText>
 			<QuestionSection>
-			<div className="question">{currentQuestion?.question}</div>
-			<QuestionImg>
-				<img src={currentQuestion?.image} />
-			</QuestionImg>
-			<BtnWrapper
-				onClick={() => {
-					setProgress(progress + 1);
-				}}
-			>
-				<SelectButton
-					bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%)"
-					text={currentQuestion?.answer[0].text}
-				/>
-			</BtnWrapper>
-			<BtnWrapper
-				onClick={() => {
-					setProgress(progress + 1);
-				}}
-			>
-				<SelectButton
-					bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%)"
-					text={currentQuestion?.answer[1].text}
-				/>
-			</BtnWrapper>
-			<BtnWrapper
-				onClick={() => {
-					setProgress(progress + 1);
-				}}
-			>
-				<SelectButton
-					bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%)"
-					text={currentQuestion?.answer[2].text}
-				/>
-			</BtnWrapper>
+				<div className="question">{currentQuestion?.question}</div>
+				<QuestionImg>
+					<img src={currentQuestion?.image} />
+				</QuestionImg>
+				{currentQuestion?.answer.map((answerOption: any, index: number) => (
+					<BtnWrapper key={index} onClick={handleButtonClick}>
+						<SelectButton bgColor={btncolor} text={answerOption.text} textColor={textcolor} />
+					</BtnWrapper>
+				))}
 			</QuestionSection>
 		</Wrapper>
 	);
@@ -134,4 +144,14 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-`
+`;
+const BiteText = styled.span<{$bold:string}>`
+	color: var(--black, #171717);
+	font-family: DNF Bit Bit v2;
+	font-size: 2.16rem;
+	font-weight: 400;
+	margin-top: 3rem;
+	.bold {
+		color: ${(props)=>props.$bold};
+	}
+`;

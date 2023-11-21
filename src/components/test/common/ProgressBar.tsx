@@ -8,19 +8,6 @@ type ProgressBarPropsType = {
 	progress: number;
 };
 
-enum ProgressLabels {
-	'한',
-	'두',
-	'세',
-	'네',
-	'다섯',
-	'여섯',
-	'일곱',
-	'여덟',
-	'아홉',
-	'마지막',
-}
-
 const ProgressBar = (props: ProgressBarPropsType) => {
 	const { fruit, progress } = props;
 
@@ -31,7 +18,7 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 
 	const renderMissionComponent = () => {
 		const fruitCount = getCount();
-		switch (props.fruit) {
+		switch (fruit) {
 			case FRUITS.STRAWBERRY:
 				return (
 					<ProgressWrap>
@@ -76,9 +63,7 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 	return (
 		<>
 			{renderMissionComponent()}
-			<BiteText>
-				탕후루 <span className="bold">{ProgressLabels[progress]} </span>입
-			</BiteText>
+			
 		</>
 	);
 };
@@ -135,13 +120,3 @@ const StyledImage = styled(Image)`
 	object-fit: cover;
 `;
 
-const BiteText = styled.span`
-	color: var(--black, #171717);
-	font-family: DNF Bit Bit v2;
-	font-size: 2.16rem;
-	font-weight: 400;
-	margin-top: 3rem;
-	.bold {
-		color: #fc615e;
-	}
-`;

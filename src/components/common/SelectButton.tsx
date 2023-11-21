@@ -6,12 +6,13 @@ type SelectButtonPropsType = {
 	text: string;
 	bgColor: string;
 	size?: number; // 선택사항
+	textColor?: string;
 };
 
 const SelectButton = (props: SelectButtonPropsType) => {
 	return (
 		<>
-			<BtnBox $bgColor={props.bgColor} $size={props.size || 2}>
+			<BtnBox $bgColor={props.bgColor} $size={props.size || 2} $textColor={props.textColor || ' #464646'}>
 				{props.text}
 			</BtnBox>
 			<ShadowBox />
@@ -25,7 +26,7 @@ const BtnWrapper = styled.div`
 	width: 100%;
 `;
 
-const BtnBox = styled.div<{ $bgColor: string; $size: number }>`
+const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -34,7 +35,7 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number }>`
 	border-radius: 35.625px;
 	border: 1.187px solid #646464;
 	background: ${(props) => props.$bgColor};
-	color: #464646;
+	color: ${(props) => props.$textColor};
 	font-family: 'DNF Bit Bit v2';
 	line-height: normal;
 	font-size: ${(props) => props.$size}rem;
