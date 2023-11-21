@@ -6,6 +6,7 @@ import TitleDesignText from '../common/TitleDesignText';
 import { INTRO_BTN } from '@/utils/constant';
 import SelectButton from '../common/SelectButton';
 import Signup from '../signup/signup';
+import Image from 'next/image';
 
 const IntroMain = () => {
 	const router = useRouter();
@@ -59,6 +60,9 @@ const IntroMain = () => {
 					<SubTitle>이 테스트는 1970년 왕가탕후루 중앙대본점에서 시작되어...</SubTitle>
 				</TitleWrapper>
 				{/* <BtnWrapper onClick={() => handleClick(INTRO_BTN.LOGIN)}> */}
+				<ImageWrapper>
+					<StyledImage src="/img/orange.png" alt={'오렌지'} fill priority />
+				</ImageWrapper>
 				<BtnWrapper onClick={login}>
 					<SelectButton
 						bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
@@ -94,7 +98,7 @@ const TitleWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin-top: 2rem;
-	bottom: 25rem;
+	bottom: 5rem;
 `;
 
 const SubTitle = styled.div`
@@ -117,7 +121,7 @@ const BtnWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	top: 24rem;
+	top: 3rem;
 `;
 
 const BtnSignup = styled.div`
@@ -129,5 +133,15 @@ const BtnSignup = styled.div`
 	font-weight: 400;
 	line-height: normal;
 	border-bottom: 2px solid #999;
-	top: 25rem;
+	top: 4rem;
+`;
+
+const ImageWrapper = styled.div`
+	width: 25%;
+`;
+
+const StyledImage = styled(Image)`
+	position: relative !important;
+	height: unset !important;
+	object-fit: cover;
 `;
