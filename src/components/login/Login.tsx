@@ -8,6 +8,7 @@ type ModalProps = {
 };
 
 const Login = ({ closeModal, goTest }: ModalProps) => {
+	const totalHeight = document.documentElement.scrollHeight;
 	const close = () => {
 		closeModal();
 	};
@@ -16,21 +17,35 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 		goTest();
 	};
 
+	const ModalSectionWrapper = ({ children, closeModal }: { children: React.ReactNode, closeModal: () => void }) => {
+		const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		  // If the click is on the black area (ModalSection), close the modal
+		  if (e.target === e.currentTarget) {
+			closeModal();
+		  }
+		};
+	  
+		return (
+		  <ModalSection onClick={handleClick} height={totalHeight}>
+			{children}
+		  </ModalSection>
+		);
+	  };
+
 	return (
-		<>
-			<Shadow onClick={close} />
+		<ModalSectionWrapper closeModal={closeModal}>
 			<Wrapper>
-				<ModalSection>
+				<InputWrapper>
 					<CloseButton onClick={close}>X</CloseButton>
 					<LoginText>로그인</LoginText>
 					<Text>이번엔 저번 기록을 깨보자구!!</Text>
 					<ImageWrapper>
-						<StyledImage src={'/img/fruit0.png'} alt={'딸기'} fill priority />
+						<StyledImage src={'/img/fruitBig0.png'} alt={'딸기'} fill priority />
 					</ImageWrapper>
 					<Input1 placeholder="닉네임을 입력해주세요" />
 					<Input1 type="password" placeholder="비밀번호를 입력해주세요" />
 					<FindPassWord>비밀번호를 잊어버리셨나요?</FindPassWord>
-				</ModalSection>
+				</InputWrapper>
 				<BtnWrapper onClick={go}>
 					<SelectButton
 						bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
@@ -38,22 +53,34 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 					/>
 				</BtnWrapper>
 			</Wrapper>
-		</>
+		</ModalSectionWrapper>
 	);
 };
 
 export default Login;
 
-const Shadow = styled.div`
+const ModalSection = styled.div<{ height: number }>`
 	position: fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
-	z-index: 2;
-	cursor: pointer;
+	top: 0;
+	right: 50%;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	height: ${(props) => props.height};
+	background: rgba(0, 0, 0, 0.77);
+	z-index: 3;
+	@media (min-width: 490px) {
+		width: 490px;
+	}
 `;
 
 const Wrapper = styled.div`
+	width: 60%;
 	position: fixed;
 	display: flex;
 	flex-direction: column;
@@ -63,28 +90,27 @@ const Wrapper = styled.div`
 `;
 
 const CloseButton = styled.button`
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 20px;
-	height: 20px;
+	font-size: 2.7rem;
 	color: #b5b5bc;
 	background-color: #fdfdfd;
 	border: none;
 	cursor: pointer;
+	position: relative;
+	margin-top: -18%;
+	margin-bottom: 1rem;
+	margin-right: -95%;
 `;
 
 const LoginText = styled.div`
 	color: #171717;
-	position: relative;
 	text-align: center;
 	font-family: 'NeoDunggeunmo Pro';
-	font-size: 2.5rem;
+	font-size: 3rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
 	letter-spacing: 1.756px;
-	bottom: 1rem;
+	margin-bottom: 1rem;
 `;
 
 const Text = styled.div`
@@ -92,7 +118,7 @@ const Text = styled.div`
 	position: relative;
 	text-align: center;
 	font-family: 'NeoDunggeunmo Pro';
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
@@ -114,24 +140,8 @@ const FindPassWord = styled.div`
 	border-bottom: 2px solid #999;
 `;
 
-const ModalSection = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	width: 30rem;
-	height: 45rem;
-	flex-shrink: 0;
-	padding: 40px 20px;
-	border-radius: 0.625rem;
-	background: #fdfdfd;
-	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-	position: absolute;
-`;
-
 const ImageWrapper = styled.div`
-	width: 52%;
-	height: 50%;
+	width: 34%;
 `;
 
 const StyledImage = styled(Image)`
@@ -144,7 +154,7 @@ const StyledImage = styled(Image)`
 const Input1 = styled.input`
 	width: 90%;
 	color: var(--grey, #727272);
-	background: #eae9e9;
+	background:  #F5F5F5;
 	font-family: 'SKYBORI';
 	font-size: 1.4rem;
 	font-weight: 400;
@@ -156,10 +166,20 @@ const Input1 = styled.input`
 
 const BtnWrapper = styled.div`
 	width: 36rem;
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	top: 32rem;
+`;
+
+const InputWrapper = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	border-radius: 1.25rem;
+	padding: 7rem 2.75rem;
+	margin-bottom: 1rem;
 `;
