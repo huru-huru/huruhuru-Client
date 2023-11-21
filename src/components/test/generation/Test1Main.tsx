@@ -1,5 +1,5 @@
 'use client';
-import { FRUITS, ProgressLabels } from '@/utils/constant';
+import { FRUITS } from '@/utils/constant';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ import { QuestionData } from '@/types/request';
 import { test1sample } from '@/utils/dummydata';
 import Image from 'next/image';
 import SelectButton from '@/components/common/SelectButton';
-import { testBackgroundColors, testBtnTextColor, testButtonColors, testTitleBoldColor } from '@/utils/constant/colorConstants';
+import { testColors } from '@/utils/constant/colorConstants';
 
 const Test1Main = () => {
 	const router = useRouter();
@@ -17,57 +17,32 @@ const Test1Main = () => {
 	const [progress, setProgress] = useState(0);
 	const [currentQuestion, setQuestion] = useState<QuestionData>();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
-	const background =
+	const testcolors =
 		selectType === FRUITS.STRAWBERRY
-			? testBackgroundColors.STRAWBERRY
+			? testColors.STRAWBERRY
 			: selectType === FRUITS.SHINE
-			? testBackgroundColors.SHINE
+			? testColors.SHINE
 			: selectType === FRUITS.BLACK
-			? testBackgroundColors.BLACK
-			: testBackgroundColors.DEFAULT;
-
-	const btncolor =
-		selectType === FRUITS.STRAWBERRY
-			? testButtonColors.STRAWBERRY
-			: selectType === FRUITS.SHINE
-			? testButtonColors.SHINE
-			: selectType === FRUITS.BLACK
-			? testButtonColors.BLACK
-			: testBackgroundColors.DEFAULT;
-
-	const textcolor =
-		selectType === FRUITS.STRAWBERRY
-			? testBtnTextColor.STRAWBERRY
-			: selectType === FRUITS.SHINE
-			? testBtnTextColor.SHINE
-			: selectType === FRUITS.BLACK
-			? testBtnTextColor.BLACK
-			: testBackgroundColors.DEFAULT;
-
-	const titleBoldcolor =
-		selectType === FRUITS.STRAWBERRY
-			? testTitleBoldColor.STRAWBERRY
-			: selectType === FRUITS.SHINE
-			? testTitleBoldColor.SHINE
-			: selectType === FRUITS.BLACK
-			? testTitleBoldColor.BLACK
-			: testBackgroundColors.DEFAULT;
+			? testColors.BLACK
+			: testColors.DEFAULT;
 
 	useEffect(() => {
-		setQuestion(test1sample[progress]);
-	}, [progress]);
+		if (progress === 10) {
+			router.push(`generationTest/result?fruits=${selectType}`);
+		} else {
+			setQuestion(test1sample[progress]);
+		}
+	}, [progress, router, selectType]);
 
 	const handleButtonClick = () => {
 		setProgress(progress + 1);
 	};
 
 	return (
-		<Wrapper $bg={background}>
+		<Wrapper $bg={testcolors.bg}>
 			<TestHeader fruit={selectType} />
 			<ProgressBar fruit={selectType} progress={progress} />
-			<BiteText $bold={titleBoldcolor}>
-				탕후루 <span className="bold">{ProgressLabels[progress]} </span>입
-			</BiteText>
+
 			<QuestionSection>
 				<div className="question">{currentQuestion?.question}</div>
 				<QuestionImg>
@@ -75,7 +50,7 @@ const Test1Main = () => {
 				</QuestionImg>
 				{currentQuestion?.answer.map((answerOption: any, index: number) => (
 					<BtnWrapper key={index} onClick={handleButtonClick}>
-						<SelectButton bgColor={btncolor} text={answerOption.text} textColor={textcolor} />
+						<SelectButton bgColor={testcolors.btnbg} text={answerOption.text} textColor={testcolors.btntext} />
 					</BtnWrapper>
 				))}
 			</QuestionSection>
@@ -144,14 +119,4 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-`;
-const BiteText = styled.span<{$bold:string}>`
-	color: var(--black, #171717);
-	font-family: DNF Bit Bit v2;
-	font-size: 2.16rem;
-	font-weight: 400;
-	margin-top: 3rem;
-	.bold {
-		color: ${(props)=>props.$bold};
-	}
 `;

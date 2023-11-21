@@ -1,9 +1,12 @@
-import React from 'react'
+import Result1 from '@/components/test/generation/Result1';
+import React from 'react';
 
 const page = () => {
-  return (
-    <div>page</div>
-  )
-}
+	return (
+		<>
+			<Result1 />
+		</>
+	);
+};
 
-export default page
+export default page;
