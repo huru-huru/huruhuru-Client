@@ -63,7 +63,7 @@ const Result1 = () => {
 					</Info>
 					<Info>
 						<Circle />
-						<div className="info">아 힘들다</div>
+						<div className="info">탕후루는 맛있어</div>
 					</Info>
 				</div>
 			</ResultBox>
