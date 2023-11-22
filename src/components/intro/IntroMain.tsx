@@ -107,6 +107,7 @@ const Wrapper = styled.div`
 	min-height: 100vh;
 	height: 100%;
 	background: linear-gradient(180deg, #7defe5 0%, #faf4d4 100%);
+	padding: 1rem 0rem;
 `;
 
 const TitleWrapper = styled.div`
@@ -147,7 +148,7 @@ const BtnSignup = styled.div`
 	color: #999;
 	position: relative;
 	font-family: 'DNF Bit Bit v2';
-	font-size: 2.15rem;
+	font-size: 1.867rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -156,7 +157,7 @@ const BtnSignup = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-	width: 25%;
+	width: 20%;
 `;
 
 const StyledImage = styled(Image)`
