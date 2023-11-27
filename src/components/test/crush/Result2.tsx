@@ -12,6 +12,7 @@ const Result2 = () => {
 	const router = useRouter();
 	const params = useSearchParams();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
+	const score = parseInt(params.get('score') || '0', 10);
 	const resultcolor =
 		selectType === FRUITS.STRAWBERRY
 			? resultColors.STRAWBERRY
@@ -38,7 +39,7 @@ const Result2 = () => {
 			<div className="fruit-img">
 				<StyledImage src={`/img/result2fruit${0}.png`} alt="결과 과일" fill priority />
 				<div className="count">
-					<div className="text1">8</div>
+					<div className="text1">{score}</div>
 					<div className="text2">/ 10개</div>
 				</div>
 			</div>
@@ -131,11 +132,32 @@ const Result2 = () => {
 			</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
-				<ShareBtnGroup></ShareBtnGroup>
+				<ShareBtnGroup>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo0.png`} alt="인스타 공유" fill priority />
+					</div>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo1.png`} alt="페북 공유" fill priority />
+					</div>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo2.png`} alt="트위터 공유" fill priority />
+					</div>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
+					</div>
+				</ShareBtnGroup>
 			</ResultShare>
 			<TestShare>
 				<Title>탕후루 친구랑 같이 먹자!</Title>
 				<div className="sub">친구들에게 테스트 공유하기</div>
+				<ShareBtnGroup>
+					<div className="share2">
+						<StyledImage src={`/img/shareLogo4.png`} alt="공유" fill priority />
+					</div>
+					<div className="share2">
+						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
+					</div>
+				</ShareBtnGroup>
 			</TestShare>
 			<Ranking>
 				<Title>전체 랭킹</Title>
@@ -356,7 +378,19 @@ const Title = styled.div`
 `;
 
 const ShareBtnGroup = styled.div`
+position: "relative";
 	display: flex;
+	gap: 2rem;
+	width: 50%;
+	align-items:center;
+	justify-content:center;
+	margin-top: 2rem;
+	.share {
+		width: 95%;
+	}
+	.share2{
+		width: 18.60%;
+	}
 `;
 
 const ResultDetail = styled.div`
