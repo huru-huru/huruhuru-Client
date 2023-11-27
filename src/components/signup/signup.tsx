@@ -1,6 +1,11 @@
+'use client';
+
 import { styled } from 'styled-components';
 import Image from 'next/image';
 import SelectButton from '../common/SelectButton';
+import { useState, ChangeEvent } from 'react';
+import { signup } from '@/apis/login';
+import { ModalSectionWrapper } from './ModalSection';
 
 type ModalProps = {
 	closeModal: () => void;
@@ -8,47 +13,68 @@ type ModalProps = {
 };
 
 const Signup = ({ closeModal, goTest }: ModalProps) => {
-	const close = () => {
-		closeModal();
+	const [nickname, setNickname] = useState('');
+	const [password, setPassword] = useState('');
+	const [isSignupFailed, setIsSignupFailed] = useState(false);
+
+	const handleNickNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setNickname(e.target.value);
 	};
 
-	const go = () => {
-		goTest();
+	const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setPassword(e.target.value);
 	};
 
-	const ModalSectionWrapper = ({ children, closeModal }: { children: React.ReactNode, closeModal: () => void }) => {
-		const totalHeight = document.documentElement.scrollHeight;
-		const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-		  if (e.target === e.currentTarget) {
-			closeModal();
-		  }
-		};
-	  
-		return (
-		  <ModalSection onClick={handleClick} height={totalHeight}>
-			{children}
-		  </ModalSection>
-		);
-	  };
+	const body = {
+		nickname: nickname,
+		password: password,
+	};
 
+	const handleClick = async () => {
+		const result = await signup(body);
+		if (result) {
+			return true;
+		}
+	};
+
+	const go = async () => {
+		const success = await handleClick();
+		if (!success) {
+			setIsSignupFailed(true);
+		} else {
+			goTest();
+		}
+	};
 
 	return (
-			<ModalSectionWrapper closeModal={closeModal}>
+		<ModalSectionWrapper>
 			<Wrapper>
 				<InputWrapper>
-					<CloseButton onClick={close}>X</CloseButton>
+					<CloseButton onClick={closeModal}>X</CloseButton>
 					<LoginText>회원가입</LoginText>
 					<Text>어서 최고점에 도전해보라구!</Text>
 					<ImageWrapper>
-						<StyledImage src={'/img/fruitBig5.png'} alt={'딸기'} fill priority />
+						<StyledImage src={'/img/fruitBig5.png'} alt={'파인애플'} fill priority />
 					</ImageWrapper>
-					<Input1 placeholder="닉네임을 입력해주세요" />
-					<Input1 type="password" placeholder="비밀번호를 입력해주세요" />
+					<Input1
+						failed={isSignupFailed}
+						placeholder="닉네임을 입력해주세요"
+						onChange={handleNickNameChange}
+						value={nickname}
+					/>
+					<Input1
+						failed={isSignupFailed}
+						type="password"
+						placeholder="비밀번호를 입력해주세요"
+						onChange={handlePasswordChange}
+						value={password}
+					/>
 				</InputWrapper>
-				<BtnWrapper onClick={go}>
+				<BtnWrapper>
 					<SelectButton
 						bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
 						text="이제 도전하러 가볼까?"
+						onClick={go}
 					/>
 				</BtnWrapper>
 			</Wrapper>
@@ -57,26 +83,6 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 };
 
 export default Signup;
-
-const ModalSection = styled.div<{ height: number }>`
-	position: fixed;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	top: 0;
-	right: 50%;
-	bottom: 0;
-	left: 50%;
-	transform: translate(-50%, 0%);
-	height: ${(props) => props.height};
-	background: rgba(0, 0, 0, 0.77);
-	z-index: 3;
-	@media (min-width: 490px) {
-		width: 490px;
-	}
-`;
 
 const Wrapper = styled.div`
 	width: 60%;
@@ -126,7 +132,8 @@ const Text = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-	width: 36%;
+	width: 65%;
+	margin-top: 2rem;
 	margin-bottom: 2rem;
 `;
 
@@ -137,17 +144,17 @@ const StyledImage = styled(Image)`
 	margin-top: 1.9rem;
 `;
 
-const Input1 = styled.input`
+const Input1 = styled.input<{ failed: boolean }>`
 	width: 90%;
-	color: var(--grey, #727272);
-	background:  #F5F5F5;
+	color: ${(props) => (props.failed ? '#EF6161' : '#727272')};
+	background: #f5f5f5;
 	font-family: 'SKYBORI';
 	font-size: 1.4rem;
 	font-weight: 400;
 	line-height: normal;
 	padding: 1.5rem;
 	margin-top: 1rem;
-	border: 1px solid #f5f5f5;
+	border: 1px solid ${(props) => (props.failed ? '#EF6161' : '#f5f5f5')};
 `;
 
 const BtnWrapper = styled.div`
@@ -156,6 +163,7 @@ const BtnWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
+	margin-top: 1rem;
 `;
 
 const InputWrapper = styled.div`

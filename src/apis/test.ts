@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseURL = `http://huruhuru.kro.kr:8080/`;
+const baseURL = `https://huruhuru.kro.kr:8080/`;
 
 // 테스트 셋 가져오기
 export const getTestSet = async (category: number, theme: number) => {
-    console.log(category,theme);
+	console.log(category, theme);
 	try {
 		const response = await axios.get(`${baseURL}test?category=${category}&theme=${theme}`);
 		console.log(response);
@@ -48,7 +48,7 @@ export const postResultScore = async (selectedTheme: number, userScore: number) 
 };
 
 // 테스트2 랭킹 가져오기
-export const getRank = async (memberId:number) => {
+export const getRank = async (memberId: number) => {
 	try {
 		const response = await axios.get(`${baseURL}score/${memberId}`);
 		console.log(response);
@@ -61,7 +61,7 @@ export const getRank = async (memberId:number) => {
 
 // 테스트 참여자수 증가
 export const updateUserCount = async (category: number, theme: number) => {
-    console.log(category,theme);
+	console.log(category, theme);
 	try {
 		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`);
 		console.log(response);
