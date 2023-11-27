@@ -58,3 +58,16 @@ export const getRank = async (memberId:number) => {
 		return false;
 	}
 };
+
+// 테스트 참여자수 증가
+export const updateUserCount = async (category: number, theme: number) => {
+    console.log(category,theme);
+	try {
+		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`);
+		console.log(response);
+		return response;
+	} catch (error) {
+		console.log(error);
+		return false;
+	}
+};

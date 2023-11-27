@@ -9,7 +9,7 @@ import { Answer, QuestionData } from '@/types/request';
 import Image from 'next/image';
 import SelectButton from '@/components/common/SelectButton';
 import { testColors } from '@/utils/constant/colorConstants';
-import { getTestSet } from '@/apis/test';
+import { getTestSet, updateUserCount } from '@/apis/test';
 
 const Test1Main = () => {
 	const router = useRouter();
@@ -59,6 +59,8 @@ const Test1Main = () => {
 			// console.log(resultSet);
 			// 인덱스 0 : 10대, 1 : 20대, 2 : 부모님 세대
 			const gen = randomIndexOfMaxValue();
+			const response = updateUserCount(1, selectType);
+			console.log(response)
 			router.push(`generationTest/result?fruits=${selectType}&generation=${gen}`);
 		} else {
 			if (testSet) {
