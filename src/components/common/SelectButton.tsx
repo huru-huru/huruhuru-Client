@@ -7,12 +7,18 @@ type SelectButtonPropsType = {
 	bgColor: string;
 	size?: number; // 선택사항
 	textColor?: string;
+	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 const SelectButton = (props: SelectButtonPropsType) => {
 	return (
 		<>
-			<BtnBox $bgColor={props.bgColor} $size={props.size || 2} $textColor={props.textColor || ' #464646'}>
+			<BtnBox
+				$bgColor={props.bgColor}
+				$size={props.size || 2}
+				$textColor={props.textColor || ' #464646'}
+				onClick={props.onClick}
+			>
 				{props.text}
 			</BtnBox>
 			<ShadowBox />
@@ -33,7 +39,7 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string 
 	width: 80%;
 	padding: 0.5rem 2rem;
 	min-height: 5.2rem;
-	height:fit-content;
+	height: fit-content;
 	border-radius: 35.625px;
 	border: 1.187px solid #646464;
 	background: ${(props) => props.$bgColor};
@@ -51,7 +57,7 @@ const ShadowBox = styled.div`
 	width: 80%;
 	padding: 0.5rem 2rem;
 	min-height: 5.2rem;
-	height:fit-content;
+	height: fit-content;
 	border-radius: 35.625px;
 	background: #646464;
 	margin-top: -5.7rem;
