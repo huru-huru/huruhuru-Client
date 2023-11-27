@@ -12,6 +12,8 @@ const Result1 = () => {
 	const router = useRouter();
 	const params = useSearchParams();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
+	const selectGeneration = parseInt(params.get('generation') || '0', 10);
+
 	const resultcolor =
 		selectType === FRUITS.STRAWBERRY
 			? resultColors.STRAWBERRY
@@ -27,6 +29,15 @@ const Result1 = () => {
 			? resultColors.FINEAPPLE
 			: resultColors.DEFAULT;
 
+	const resultContent =
+		selectGeneration === 0
+			? { title: '상콤발랄 10대', content: '10대 어쩌구저쩌구' }
+			: selectGeneration === 1
+			? { title: '어쩌구 20대', content: '20대 어쩌구저쩌구' }
+			: selectGeneration === 2
+			? { title: '어쩌구 어른세대', content: '어른이 어쩌구저쩌구' }
+			: { title: '', content: '' };
+
 	const handleClick = (props: string) => {
 		router.push(`${props}`);
 	};
@@ -39,7 +50,7 @@ const Result1 = () => {
 			</div>
 			<ResultBox $bgcolor={resultcolor.btnbg} $color={resultcolor.textcolor} $bordercolor={resultcolor.border}>
 				<div className="box-top">
-					<div className="result-title">상콤발랄 10대</div>
+					<div className="result-title">{resultContent.title}</div>
 					<GoTriangleDown className="icon" size="15%" color={resultcolor.btnbg} />
 				</div>
 
@@ -51,7 +62,7 @@ const Result1 = () => {
 					</div>
 					<Info>
 						<Circle />
-						<div className="info">탕후루의 맛을 제대로 아는 당신😋</div>
+						<div className="info">{resultContent.content}</div>
 					</Info>
 					<Info>
 						<Circle />
@@ -77,14 +88,41 @@ const Result1 = () => {
 			>
 				다른 탕후루도 맛보기
 			</Btn1>
-			<Btn2 onClick={()=>{handleClick('/')}}>테스트2도 하러가기</Btn2>
+			<Btn2
+				onClick={() => {
+					handleClick('/');
+				}}
+			>
+				테스트2도 하러가기
+			</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
-				<ShareBtnGroup></ShareBtnGroup>
+				<ShareBtnGroup>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo0.png`} alt="인스타 공유" fill priority />
+					</div>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo1.png`} alt="페북 공유" fill priority />
+					</div>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo2.png`} alt="트위터 공유" fill priority />
+					</div>
+					<div className="share">
+						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
+					</div>
+				</ShareBtnGroup>
 			</ResultShare>
 			<TestShare>
 				<Title>탕후루 친구랑 같이 먹자!</Title>
 				<div className="sub">친구들에게 테스트 공유하기</div>
+				<ShareBtnGroup>
+					<div className="share2">
+						<StyledImage src={`/img/shareLogo4.png`} alt="공유" fill priority />
+					</div>
+					<div className="share2">
+						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
+					</div>
+				</ShareBtnGroup>
 			</TestShare>
 		</Wrapper>
 	);
@@ -101,7 +139,7 @@ const Wrapper = styled.div<{ $bg: string }>`
 	min-height: 100vh;
 	height: 100%;
 	background: ${(props) => props.$bg};
-	padding-bottom: 3rem;
+	padding-bottom: 5rem;
 	padding-top: 15%;
 	.fruit-img {
 		margin-top: 3.61088rem;
@@ -257,5 +295,17 @@ const Title = styled.div`
 `;
 
 const ShareBtnGroup = styled.div`
+position: "relative";
 	display: flex;
+	gap: 2rem;
+	width: 50%;
+	align-items:center;
+	justify-content:center;
+	margin-top: 2rem;
+	.share {
+		width: 95%;
+	}
+	.share2{
+		width: 18.60%;
+	}
 `;

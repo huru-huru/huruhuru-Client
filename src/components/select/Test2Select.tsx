@@ -16,7 +16,7 @@ const Test2Select = () => {
 	return (
 		<Wrapper>
 			<TitleDesignText text="테스트 2" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
-			<SubTitle>주제에 맞는 탕후루를 선택해 주세요!</SubTitle>
+			<SubTitle>탕후루를 선택해 주세요!</SubTitle>
 			<Line>
 				<BtnWrapper
 					onClick={() => {
@@ -26,7 +26,7 @@ const Test2Select = () => {
 					<ImageWrapper>
 						<StyledImage src="/img/huru0.png" alt={'딸기'} fill priority />
 					</ImageWrapper>
-					<SelectButton bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%);" text="학교/학업"size={1.7} />
+					<SelectButton bgColor="linear-gradient(0deg, #FF9F96 0%, #FFCEC9 87.5%);" text="학교/학업"size={1.5} />
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
@@ -36,7 +36,7 @@ const Test2Select = () => {
 					<ImageWrapper>
 						<StyledImage src="/img/huru2.png" alt={'샤머'} fill priority />
 					</ImageWrapper>
-					<SelectButton bgColor="linear-gradient(0deg, #C7DB17 0%, #F8FEB8 87.5%);" text="문구점"size={1.7} />
+					<SelectButton bgColor="linear-gradient(0deg, #C7DB17 0%, #F8FEB8 87.5%);" text="문구점"size={1.5} />
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
@@ -46,7 +46,7 @@ const Test2Select = () => {
 					<ImageWrapper>
 						<StyledImage src="/img/huru3.png" alt={'포도'} fill priority />
 					</ImageWrapper>
-					<SelectButton textColor="white" bgColor="linear-gradient(0deg, #633D55 0%, #9A5A73 87.5%);" text="TV/연예"size={1.7} />
+					<SelectButton textColor="white" bgColor="linear-gradient(0deg, #633D55 0%, #9A5A73 87.5%);" text="TV/연예"size={1.5} />
 				</BtnWrapper>
 				</Line>
 				<Line>
@@ -58,7 +58,7 @@ const Test2Select = () => {
 					<ImageWrapper>
 						<StyledImage src="/img/huru4.png" alt={'방토'} fill priority />
 					</ImageWrapper>
-					<SelectButton textColor="white" bgColor="linear-gradient(0deg, #E92E0D 0%, #F47E5D 87.5%);" text="게임"size={1.7} />
+					<SelectButton textColor="white" bgColor="linear-gradient(0deg, #E92E0D 0%, #F47E5D 87.5%);" text="게임"size={1.5} />
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
@@ -68,7 +68,7 @@ const Test2Select = () => {
 					<ImageWrapper>
 						<StyledImage src="/img/huru5.png" alt={'파인애플'} fill priority />
 					</ImageWrapper>
-					<SelectButton bgColor="linear-gradient(0deg, #F3D722 0%, #FFF4A2 87.5%);" text="음식"size={1.7} />
+					<SelectButton bgColor="linear-gradient(0deg, #F3D722 0%, #FFF4A2 87.5%);" text="음식"size={1.5} />
 				</BtnWrapper>
 				<BtnWrapper
 					onClick={() => {
@@ -78,7 +78,7 @@ const Test2Select = () => {
 					<ImageWrapper>
 						<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />
 					</ImageWrapper>
-					<SelectButton bgColor="linear-gradient(0deg, #FE8920 0%, #FFCB94 87.5%);" text="의류/생활" size={1.7}/>
+					<SelectButton bgColor="linear-gradient(0deg, #FE8920 0%, #FFCB94 87.5%);" text="의류/생활" size={1.5}/>
 				</BtnWrapper>
 			</Line>
 		</Wrapper>
