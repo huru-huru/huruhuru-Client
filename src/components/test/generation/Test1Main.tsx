@@ -146,6 +146,7 @@ const Test1Main = () => {
 				<QuestionImg>
 					<img src={currentQuestion?.image} />
 				</QuestionImg>
+				<div className='source'>출처 : {currentQuestion?.image_url}</div>
 				{shuffledAnswerList?.map((answerOption: any, index: number) => (
 					// 해당 답변의 인덱스 값이 인자로 들어감
 					<BtnWrapper key={index} onClick={() => handleButtonClick(answerOption.id)}>
@@ -186,7 +187,7 @@ const Wrapper = styled.div<{ $bg: string }>`
 
 const QuestionImg = styled.div`
 	margin-top: 3rem;
-	margin-bottom: 3rem;
+	margin-bottom: 0.5rem;
 	width: 50%;
 	padding-bottom: 50%;
 	position: relative;
@@ -223,4 +224,9 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	.source{
+		font-size : 1rem;
+		color: #6F6F6F;
+		margin-bottom: 3rem;
+	}
 `;

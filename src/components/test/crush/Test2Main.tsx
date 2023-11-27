@@ -78,6 +78,7 @@ const Test2Main = () => {
 				<QuestionImg>
 					<img src={currentQuestion?.image} />
 				</QuestionImg>
+				<div className='source'>출처 : {currentQuestion?.image_url}</div>
 				<BtnSection>
 					<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[0].correct)}>
 						<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
@@ -137,7 +138,7 @@ const Wrapper = styled.div<{ $bg: string }>`
 
 const QuestionImg = styled.div`
 	margin-top: 3rem;
-	margin-bottom: 3rem;
+	margin-bottom: 0.5rem;
 	width: 50%;
 	padding-bottom: 50%;
 	position: relative;
@@ -164,11 +165,11 @@ const BtnWrapper = styled.div`
 	min-width: 40%;
 `;
 
-const StyledImage = styled(Image)`
-	position: relative !important;
-	height: unset !important;
-	object-fit: cover;
-`;
+// const StyledImage = styled(Image)`
+// 	position: relative !important;
+// 	height: unset !important;
+// 	object-fit: cover;
+// `;
 
 const QuestionSection = styled.div`
 	min-height: 70vh;
@@ -177,6 +178,11 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	.source{
+		font-size : 1rem;
+		color: #6F6F6F;
+		margin-bottom: 3rem;
+	}
 `;
 
 const BtnBox = styled.div<{ $bgColor: string; $textColor: string }>`
