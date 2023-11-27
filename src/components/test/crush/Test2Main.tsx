@@ -6,14 +6,15 @@ import styled from 'styled-components';
 import TestHeader from '../common/TestHeader';
 import ProgressBar from '../common/ProgressBar';
 import { QuestionData } from '@/types/request';
-import { test2sample } from '@/utils/dummydata';
 import Image from 'next/image';
 import { testColors } from '@/utils/constant/colorConstants';
+import { getTestSet } from '@/apis/test';
 
 const Test2Main = () => {
 	const router = useRouter();
 	const params = useSearchParams();
 	const [progress, setProgress] = useState(0);
+	const [testSet, setTestSet] = useState<QuestionData[]>();
 	const [currentQuestion, setQuestion] = useState<QuestionData>();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
 	const testcolors =
@@ -31,13 +32,31 @@ const Test2Main = () => {
 			? testColors.FINEAPPLE
 			: testColors.DEFAULT;
 
-	useEffect(() => {
-		if (progress === 10) {
-			router.push(`crushTest/result?fruits=${selectType}`);
-		} else {
-			setQuestion(test2sample[progress]);
-		}
-	}, [progress, router, selectType]);
+			useEffect(() => {
+				const getTest = async () => {
+					try {
+						const response = await getTestSet(2, selectType);
+						if (response && response.data) {
+							setTestSet(response.data);
+						} else {
+							console.log('Failed to fetch mission list');
+						}
+					} catch (error) {
+						console.error('Error fetching test set:', error);
+					}
+				};
+				getTest();
+			}, [selectType]);
+		
+			useEffect(() => {
+				if (progress === 10) {
+					router.push(`crushTest/result?fruits=${selectType}`);
+				} else {
+					if (testSet) {
+						setQuestion(testSet[progress]);
+					}
+				}
+			}, [progress, router, selectType, testSet]);
 
 	const handleButtonClick = () => {
 		setProgress(progress + 1);
@@ -56,13 +75,13 @@ const Test2Main = () => {
                 <BtnSection>
                 <BtnWrapper onClick={handleButtonClick}>
                     <BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-                        {currentQuestion?.answer[0].text}
+                        {currentQuestion?.answerList[0].answerContent}
                         </BtnBox>
                         <ShadowBox />
                         </BtnWrapper>
                 <BtnWrapper onClick={handleButtonClick}>
                     <BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-                        {currentQuestion?.answer[1].text}
+                        {currentQuestion?.answerList[1].answerContent}
                         </BtnBox>
                         <ShadowBox />
                     </BtnWrapper>
@@ -70,13 +89,13 @@ const Test2Main = () => {
                 <BtnSection>
                     <BtnWrapper onClick={handleButtonClick}>
                         <BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-                            {currentQuestion?.answer[2].text}
+                            {currentQuestion?.answerList[2].answerContent}
                         </BtnBox>
                         <ShadowBox />
                     </BtnWrapper>
                     <BtnWrapper onClick={handleButtonClick}>
                         <BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-                        {currentQuestion?.answer[3].text}
+                        {currentQuestion?.answerList[3].answerContent}
                         </BtnBox>
                         <ShadowBox />
                     </BtnWrapper>
