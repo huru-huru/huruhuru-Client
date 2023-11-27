@@ -12,6 +12,7 @@ const Result2 = () => {
 	const router = useRouter();
 	const params = useSearchParams();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
+	const score = parseInt(params.get('score') || '0', 10);
 	const resultcolor =
 		selectType === FRUITS.STRAWBERRY
 			? resultColors.STRAWBERRY
@@ -38,7 +39,7 @@ const Result2 = () => {
 			<div className="fruit-img">
 				<StyledImage src={`/img/result2fruit${0}.png`} alt="결과 과일" fill priority />
 				<div className="count">
-					<div className="text1">8</div>
+					<div className="text1">{score}</div>
 					<div className="text2">/ 10개</div>
 				</div>
 			</div>
