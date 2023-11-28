@@ -28,10 +28,6 @@ const SelectButton = (props: SelectButtonPropsType) => {
 
 export default SelectButton;
 
-const BtnWrapper = styled.div`
-	width: 100%;
-`;
-
 const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string }>`
 	display: flex;
 	align-items: center;
