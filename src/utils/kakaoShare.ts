@@ -9,13 +9,17 @@ export function initKakao() {
 
 export async function onClickShareKakaoTalk() {
 	const link = typeof window !== 'undefined' ? window.location.href : '';
-	await window.Kakao.Share.sendDefault({
-		objectType: 'text',
-		text: `탕후루 어쩌구 테스트...`,
-		link: {
-			mobileWebUrl: link,
-			webUrl: link,
-		},
-	});
+    if (window.Kakao) {
+        if(window.Kakao.Share){
+            await window.Kakao.Share.sendDefault({
+                objectType: 'text',
+                text: `탕후루 어쩌구 테스트...`,
+                link: {
+                    mobileWebUrl: link,
+                    webUrl: link,
+                },
+            });
+        }
+    }
 }
 
