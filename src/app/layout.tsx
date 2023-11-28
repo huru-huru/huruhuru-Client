@@ -13,3 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		</html>
 	);
 }
+
+declare global {
+	interface Window {
+	  Kakao: any;
+	}
+  }

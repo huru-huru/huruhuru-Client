@@ -4,9 +4,10 @@ import { FRUITS } from '@/utils/constant';
 import { resultColors } from '@/utils/constant/colorConstants';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from 'react-icons/go';
+import { initKakao, onClickShareKakaoTalk } from '@/utils/kakaoShare';
 
 const Result1 = () => {
 	const router = useRouter();
@@ -41,6 +42,10 @@ const Result1 = () => {
 	const handleClick = (props: string) => {
 		router.push(`${props}`);
 	};
+
+	useEffect(()=>{
+		initKakao();
+	},[])
 
 	return (
 		<Wrapper $bg={resultcolor.bg}>
@@ -108,7 +113,7 @@ const Result1 = () => {
 						<StyledImage src={`/img/shareLogo2.png`} alt="트위터 공유" fill priority />
 					</div>
 					<div className="share">
-						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
+						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority onClick={onClickShareKakaoTalk}/>
 					</div>
 				</ShareBtnGroup>
 			</ResultShare>
