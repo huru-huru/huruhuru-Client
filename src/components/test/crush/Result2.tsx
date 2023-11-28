@@ -574,8 +574,8 @@ const RankWrapper = styled.div<{ $bordercolor: string }>`
 const RankSection = styled.div`
 	display: flex;
 	width: 97%;
-	padding: 2rem;
-	border-bottom: 2px solid #f9f9f9;
+	padding: 1.5rem;
+	border-bottom: 1px solid #f9f9f9;
 `;
 
 const Rank = styled.div`
