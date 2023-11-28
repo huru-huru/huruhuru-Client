@@ -177,7 +177,7 @@ const StyledImage = styled(Image)`
 
 const Input1 = styled.input<{ failed: boolean }>`
 	width: 90%;
-	color: var(--grey, #727272);
+	color: ${(props) => (props.failed ? '#EF6161' : '#727272')};
 	background: #f5f5f5;
 	font-family: 'SKYBORI';
 	font-size: 1.4rem;

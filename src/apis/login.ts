@@ -10,7 +10,8 @@ type LoginInfo = {
 export const signup = async (body: LoginInfo) => {
 	try {
 		const result = await axios.post(`${baseURL}signup`, body);
-		console.log(result);
+		const token = result.data.token;
+		localStorage.setItem('token', token);
 		return result;
 	} catch (error) {
 		console.log(error);
