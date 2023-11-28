@@ -4,15 +4,55 @@ import { FRUITS } from '@/utils/constant';
 import { resultColors } from '@/utils/constant/colorConstants';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from 'react-icons/go';
+import { getRank } from '@/apis/test';
+
+type Authority = {
+	authority: string;
+};
+
+type Member = {
+	id: number;
+	nickname: string;
+	testCount: number;
+	totalBestScore: number;
+	enabled: boolean;
+	authorities: Authority[];
+	accountNonLocked: boolean;
+	credentialsNonExpired: boolean;
+	accountNonExpired: boolean;
+	username: string;
+};
+
+type MyRanking = {
+	member: Member;
+	ranking: number;
+};
+
+type Top10 = {
+	id: number;
+	nickname: string;
+	testCount: number;
+	totalBestScore: number;
+	enabled: boolean;
+	authorities: Authority[];
+	accountNonLocked: boolean;
+	credentialsNonExpired: boolean;
+	accountNonExpired: boolean;
+	username: string;
+};
 
 const Result2 = () => {
 	const router = useRouter();
 	const params = useSearchParams();
 	const selectType = parseInt(params.get('fruits') || '0', 10);
 	const score = parseInt(params.get('score') || '0', 10);
+	const [myrank, setMyrank] = useState<MyRanking>();
+	const [ranking, setRanking] = useState<Top10[]>([]);
+	const [participant, setParticipant] = useState('');
+
 	const resultcolor =
 		selectType === FRUITS.STRAWBERRY
 			? resultColors.STRAWBERRY
@@ -31,6 +71,22 @@ const Result2 = () => {
 	const handleClick = (props: string) => {
 		router.push(`${props}`);
 	};
+
+	useEffect(() => {
+		const getRanking = async () => {
+			try {
+				const result = await getRank();
+				if (result) {
+					setMyrank(result.data.MyRanking);
+					setRanking(result.data.Top10);
+					setParticipant(result.data.test2Count);
+				}
+			} catch (error) {
+				console.error('Error fetching test set:', error);
+			}
+		};
+		getRanking();
+	}, []);
 
 	return (
 		<Wrapper $bg={resultcolor.bg} $bordercolor={resultcolor.border}>
@@ -52,13 +108,13 @@ const Result2 = () => {
 				<div className="box">
 					<Info>
 						<div className="text1">지금까지 내가 깨트린 탕후루 개수</div>
-						<div className="crush-count">48</div>
+						<div className="crush-count">{myrank?.member?.totalBestScore}</div>
 					</Info>
 					<div className="line" />
-					<Info>
-						<div className="text1">현재 내 순위는 10000명 중</div>
-						<div className="total-count">238</div>
-					</Info>
+					<Info2>
+						<div className="text1">현재 내 순위는 {participant}명 중</div>
+						<div className="total-count">{myrank?.ranking}</div>
+					</Info2>
 				</div>
 			</ResultBox>
 			<ResultDetail>
@@ -161,6 +217,49 @@ const Result2 = () => {
 			</TestShare>
 			<Ranking>
 				<Title>전체 랭킹</Title>
+				<RankWrapper $bordercolor={resultcolor.border}>
+					{ranking.map((item, index) => {
+						if (index + 1 === 1) {
+							return (
+								<RankSection key={index}>
+									<Rank>
+										<StyledImage src="/img/1st.png" alt="Rank 1" fill priority />
+									</Rank>
+									<Name>{item.nickname}</Name>
+									<Score>{item.totalBestScore}개</Score>
+								</RankSection>
+							);
+						} else if (index + 1 === 2) {
+							return (
+								<RankSection key={index}>
+									<Rank>
+										<StyledImage src="/img/2nd.png" alt="Rank 2" fill priority />
+									</Rank>
+									<Name>{item.nickname}</Name>
+									<Score>{item.totalBestScore}개</Score>
+								</RankSection>
+							);
+						} else if (index + 1 === 3) {
+							return (
+								<RankSection key={index}>
+									<Rank>
+										<StyledImage src="/img/3rd.png" alt="Rank 3" fill priority />
+									</Rank>
+									<Name>{item.nickname}</Name>
+									<Score>{item.totalBestScore}개</Score>
+								</RankSection>
+							);
+						} else {
+							return (
+								<RankSection key={index}>
+									<Rank>{index + 1}</Rank>
+									<Name>{item.nickname}</Name>
+									<Score>{item.totalBestScore}개</Score>
+								</RankSection>
+							);
+						}
+					})}
+				</RankWrapper>
 			</Ranking>
 		</Wrapper>
 	);
@@ -168,7 +267,7 @@ const Result2 = () => {
 
 export default Result2;
 
-const Wrapper = styled.div<{ $bg: string;  $bordercolor:string }>`
+const Wrapper = styled.div<{ $bg: string; $bordercolor: string }>`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -184,7 +283,7 @@ const Wrapper = styled.div<{ $bg: string;  $bordercolor:string }>`
 		width: 60%;
 		position: relative;
 	}
-	.count{
+	.count {
 		width: 60%;
 		position: absolute;
 		top: 74%;
@@ -196,14 +295,14 @@ const Wrapper = styled.div<{ $bg: string;  $bordercolor:string }>`
 	.text1 {
 		color: ${(props) => props.$bordercolor};
 		text-align: center;
-		font-family: DNF Bit Bit v2;
+		font-family: 'DNF Bit Bit v2';
 		font-size: 5.78575rem;
 		font-weight: 400;
 		margin-bottom: -3%;
 	}
 	.text2 {
 		color: #919191;
-		font-family: DNF Bit Bit v2;
+		font-family: 'DNF Bit Bit v2';
 		font-size: 2.18925rem;
 		font-weight: 400;
 	}
@@ -231,7 +330,7 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		color: #fff;
 		color: #fff;
 		text-align: center;
-		font-family: SKYBORI;
+		font-family: 'SKYBORI';
 		font-size: 2rem;
 		font-style: normal;
 		font-weight: 400;
@@ -255,7 +354,7 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 	.text1 {
 		color: var(--black, #171717);
 		text-align: center;
-		font-family: SKYBORI;
+		font-family: 'SKYBORI';
 		font-size: 2.25rem;
 		font-style: normal;
 		font-weight: 400;
@@ -280,7 +379,7 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 	.crush-count {
 		color: ${(props) => props.$bordercolor};
 		text-align: center;
-		font-family: DNF Bit Bit v2;
+		font-family: 'DNF Bit Bit v2';
 		font-size: 4rem;
 		font-style: normal;
 		font-weight: 400;
@@ -288,7 +387,7 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 	.total-count {
 		color: #4bd8cb;
 		text-align: center;
-		font-family: DNF Bit Bit v2;
+		font-family: 'DNF Bit Bit v2';
 		font-size: 4rem;
 		font-weight: 400;
 	}
@@ -302,7 +401,22 @@ const Info = styled.div`
 	padding-bottom: 1rem;
 	.info {
 		color: var(--grey, #727272);
-		font-family: Pretendard Variable;
+		font-family: 'Pretendard Variable';
+		font-size: 1.75rem;
+		font-weight: 400;
+		padding-left: 1rem;
+	}
+`;
+
+const Info2 = styled.div`
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 1rem;
+	.info {
+		color: var(--grey, #727272);
+		font-family: 'Pretendard Variable';
 		font-size: 1.75rem;
 		font-weight: 400;
 		padding-left: 1rem;
@@ -321,7 +435,7 @@ const Btn1 = styled.div<{ $btncolor: string; $bordercolor: string; $color: strin
 	background: ${(props) => props.$btncolor};
 	color: ${(props) => props.$color};
 	text-align: center;
-	font-family: SKYBORI;
+	font-family: 'SKYBORI';
 	font-size: 2.5rem;
 	font-weight: 400;
 	margin-top: 5rem;
@@ -339,7 +453,7 @@ const Btn2 = styled.div`
 	border: 2px solid #cafdf6;
 	background: var(--lightMint, #94f1e3);
 	text-align: center;
-	font-family: SKYBORI;
+	font-family: 'SKYBORI';
 	font-size: 2.5rem;
 	font-weight: 400;
 	cursor: pointer;
@@ -363,7 +477,7 @@ const TestShare = styled.div`
 	.sub {
 		color: var(--grey, #727272);
 		text-align: center;
-		font-family: SKYBORI;
+		font-family: 'SKYBORI';
 		font-size: 2rem;
 		font-weight: 400;
 	}
@@ -372,24 +486,24 @@ const TestShare = styled.div`
 const Title = styled.div`
 	color: var(--black, #171717);
 	text-align: center;
-	font-family: SKYBORI;
+	font-family: 'SKYBORI';
 	font-size: 3rem;
 	font-weight: 400;
 `;
 
 const ShareBtnGroup = styled.div`
-position: "relative";
+	position: 'relative';
 	display: flex;
 	gap: 2rem;
 	width: 50%;
-	align-items:center;
-	justify-content:center;
+	align-items: center;
+	justify-content: center;
 	margin-top: 2rem;
 	.share {
 		width: 95%;
 	}
-	.share2{
-		width: 18.60%;
+	.share2 {
+		width: 18.6%;
 	}
 `;
 
@@ -407,7 +521,7 @@ const CircleGroup = styled.div`
 	align-items: center;
 	justify-content: center;
 	color: #7a7a7a;
-	font-family: SKYBORI;
+	font-family: 'SKYBORI';
 	font-size: 2.25rem;
 	font-weight: 400;
 	.circle {
@@ -433,5 +547,49 @@ const CircleGroup = styled.div`
 `;
 
 const Ranking = styled.div`
+	width: 100%;
 	margin-top: 5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+const RankWrapper = styled.div<{ $bordercolor: string }>`
+	width: 80%;
+	height: fit-content;
+	font-family: 'SKYBORI';
+	border: 2px solid ${(props) => props.$bordercolor};
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.5rem;
+	padding: 1rem 3rem;
+	border-radius: 0.625rem;
+	margin-top: 1rem;
+`;
+
+const RankSection = styled.div`
+	display: flex;
+	width: 97%;
+	padding: 2rem;
+	border-bottom: 2px solid #f9f9f9;
+`;
+
+const Rank = styled.div`
+	width: 4rem;
+	text-align: center;
+	/* background-image: url('/img/1st.png'); */
+`;
+
+const Name = styled.div`
+	width: 25rem;
+	text-align: left;
+	margin-left: 5rem;
+`;
+const Score = styled.div`
+	width: 10rem;
+	text-align: end;
 `;
