@@ -32,20 +32,44 @@ const Result1 = () => {
 
 	const resultContent =
 		selectGeneration === 0
-			? { title: '상콤발랄 10대', content: '10대 어쩌구저쩌구' }
+			? {
+					title: '상콤발랄 10대',
+					subTitle: '마라탕후루~ 츄베릅',
+					text1: '지금 유행을 주도하는 당신!',
+					text2: '레트로 감성을 얻고 싶다면, 응답하라 시리즈를 좀 보고 와-!',
+					text3: '진정한 Y2K 감성을 얻고 싶다면, 테스트를 더 진행해보는 것은 어때?',
+			  }
 			: selectGeneration === 1
-			? { title: '어쩌구 20대', content: '20대 어쩌구저쩌구' }
+			? {
+					title: '몽글몽글 20-30대',
+					subTitle: '‘ㄱ’ㄴrLI..?! 우ㄹlºl 추억',
+					text1: '그 때 그 시절, 추억을 제대로 아는 당신🥳',
+					text2: '추억팔이 할 때만큼 시간 빨리 간 적 없지~',
+					text3: '당장 추억 소환하기 위해 다음 테스트로 고!',
+			  }
 			: selectGeneration === 2
-			? { title: '어쩌구 어른세대', content: '어른이 어쩌구저쩌구' }
-			: { title: '', content: '' };
+			? {
+					title: '40-50대',
+					subTitle: '라떼는 말이야~ Latte is Horse',
+					text1: '레트로 끝판왕인 당신!',
+					text2: '여기에 없는 추억이 있다면 당장 공유해줘!',
+					text3: '오랜만에 추억을 친구들과 함께 이야기 나누는 것은 어떨까?',
+			  }
+			: {
+					title: '',
+					content: '',
+					text1: '',
+					text2: '',
+					text3: '',
+			  };
 
 	const handleClick = (props: string) => {
 		router.push(`${props}`);
 	};
 
-	useEffect(()=>{
+	useEffect(() => {
 		initKakao();
-	},[])
+	}, []);
 
 	return (
 		<Wrapper $bg={resultcolor.bg}>
@@ -61,25 +85,19 @@ const Result1 = () => {
 
 				<div className="box">
 					<div className="text1">
-						{`아웅 >< 탕후루 맛있다!`}
-						<br />
-						{`내일 또 먹자~`}
+					{resultContent.subTitle}
 					</div>
 					<Info>
 						<Circle />
-						<div className="info">{resultContent.content}</div>
+						<div className="info">{resultContent.text1}</div>
 					</Info>
 					<Info>
 						<Circle />
-						<div className="info">혹시 마라탕-탕후루의 조합을 좋아하는지!</div>
+						<div className="info">{resultContent.text2}</div>
 					</Info>
 					<Info>
 						<Circle />
-						<div className="info">이런 공감 설명 문구 조금 넣으면 어떠신지!</div>
-					</Info>
-					<Info>
-						<Circle />
-						<div className="info">탕후루는 맛있어</div>
+						<div className="info">{resultContent.text3}</div>
 					</Info>
 				</div>
 			</ResultBox>
@@ -98,7 +116,7 @@ const Result1 = () => {
 					handleClick('/');
 				}}
 			>
-				테스트2도 하러가기
+				너, 2000년대 얼마나 아니?
 			</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
@@ -113,7 +131,7 @@ const Result1 = () => {
 						<StyledImage src={`/img/shareLogo2.png`} alt="트위터 공유" fill priority />
 					</div>
 					<div className="share">
-						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority onClick={onClickShareKakaoTalk}/>
+						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority onClick={onClickShareKakaoTalk} />
 					</div>
 				</ShareBtnGroup>
 			</ResultShare>
@@ -212,16 +230,19 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 `;
 
 const Info = styled.div`
-	width: 90%;
+	width: 100%;
 	display: flex;
-	align-items: center;
+	align-items: start;
+	justify-content: start;
 	padding-bottom: 1rem;
+	overflow: wrap;
 	.info {
+		width: 95%;
 		color: var(--grey, #727272);
 		font-family: Pretendard Variable;
 		font-size: 1.75rem;
 		font-weight: 400;
-		padding-left: 1rem;
+		word-break: keep-all;
 	}
 `;
 const Circle = styled.div`
@@ -229,6 +250,8 @@ const Circle = styled.div`
 	height: 0.5rem;
 	background-color: #6f6f6f;
 	border-radius: 50%;
+	margin-right: 1rem;
+	margin-top: 0.7rem;
 `;
 
 const Btn1 = styled.div<{ $btncolor: string; $bordercolor: string; $color: string }>`
@@ -300,17 +323,17 @@ const Title = styled.div`
 `;
 
 const ShareBtnGroup = styled.div`
-position: "relative";
+	position: 'relative';
 	display: flex;
 	gap: 2rem;
 	width: 50%;
-	align-items:center;
-	justify-content:center;
+	align-items: center;
+	justify-content: center;
 	margin-top: 2rem;
 	.share {
 		width: 95%;
 	}
-	.share2{
-		width: 18.60%;
+	.share2 {
+		width: 18.6%;
 	}
 `;

@@ -32,7 +32,7 @@ export const postResultScore = async (selectedTheme: number, userScore: number) 
 	try {
 		const response = await axios.post(
 			`${baseURL}save`,
-			{ theme: 0, score: 7 },
+			{ theme: selectedTheme, score: userScore },
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -42,7 +42,7 @@ export const postResultScore = async (selectedTheme: number, userScore: number) 
 		console.log(response);
 		return response;
 	} catch (error) {
-		console.log(error);
+		console.log('에러 :',error);
 		return false;
 	}
 };
