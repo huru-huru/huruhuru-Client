@@ -1,13 +1,22 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 import TitleDesignText from '../common/TitleDesignText';
 import SelectButton from '../common/SelectButton';
 import { useRouter } from 'next/navigation';
+import { participants } from '@/apis/landing';
 
 const LandingSection = () => {
+	const [num, setNum] = useState();
 	const router = useRouter();
+	const getNum = async () => {
+		const result = await participants();
+		setNum(result);
+	};
+
+	getNum();
 	return (
 		<Wrapper>
 			<MainWrapper>
@@ -18,13 +27,21 @@ const LandingSection = () => {
 				<ImgWrapper>
 					<StyledImage src="/img/landing.png" alt="랜딩 이미지" fill priority />
 				</ImgWrapper>
-				<BtnWrapper onClick={()=>{router.push('/intro?type=1')}}>
+				<BtnWrapper
+					onClick={() => {
+						router.push('/intro?type=1');
+					}}
+				>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 1" />
 				</BtnWrapper>
-				<BtnWrapper2 onClick={()=>{router.push('/intro?type=2')}}>
+				<BtnWrapper2
+					onClick={() => {
+						router.push('/intro?type=2');
+					}}
+				>
 					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 2" />
 				</BtnWrapper2>
-				<Footer>지금까지 10000명이 참여했어요!!</Footer>
+				<Footer>지금까지 {num}명이 참여했어요!!</Footer>
 			</MainWrapper>
 		</Wrapper>
 	);
