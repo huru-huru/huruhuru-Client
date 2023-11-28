@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = `https://huruhuru.kro.kr:8080/`;
+const baseURL = `https://huruhuru.kro.kr/`;
 
 // 테스트 셋 가져오기
 export const getTestSet = async (category: number, theme: number) => {

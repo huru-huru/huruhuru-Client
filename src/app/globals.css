@@ -2,7 +2,7 @@
     font-family: "SKYBORI";
     font-style:normal;
     font-weight:400;
-    src: url("/fonts/SKYBORI.ttf");
+    src: url('https://cdn.jsdelivr.net/gh/fontbee/font@main/SKYBORI/SKYBORI.ttf') format('truetype'),
   }
 
 @font-face {
