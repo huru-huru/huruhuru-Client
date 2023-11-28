@@ -8,7 +8,7 @@ import ProgressBar from '../common/ProgressBar';
 import { QuestionData } from '@/types/request';
 import Image from 'next/image';
 import { testColors } from '@/utils/constant/colorConstants';
-import { getTestSet } from '@/apis/test';
+import { getTestSet, postResultScore } from '@/apis/test';
 
 const Test2Main = () => {
 	const router = useRouter();
@@ -52,6 +52,7 @@ const Test2Main = () => {
 	useEffect(() => {
 		if (progress === 10) {
 			// console.log(crushResult);
+			postResultScore(selectType,crushResult);
 			router.push(`crushTest/result?fruits=${selectType}&score=${crushResult}`);
 		} else {
 			if (testSet) {

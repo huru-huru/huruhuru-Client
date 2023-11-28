@@ -28,14 +28,14 @@ export const getCount = async () => {
 
 // 테스트 2 점수 전송
 export const postResultScore = async (selectedTheme: number, userScore: number) => {
-	const accessToken = localStorage.getItem('access');
+	const token = localStorage.getItem('token');
 	try {
 		const response = await axios.post(
-			`${baseURL}saves`,
-			{ theme: selectedTheme, score: userScore },
+			`${baseURL}save`,
+			{ theme: 0, score: 7 },
 			{
 				headers: {
-					Authorization: `Bearer ${accessToken}`,
+					Authorization: `Bearer ${token}`,
 				},
 			},
 		);

@@ -37,7 +37,7 @@ const Result2 = () => {
 			<TitleDesignText text="당신이 깨뜨린" bgColor={resultcolor.title} size={3.6} />
 			<TitleDesignText text="탕후루의 개수는?" bgColor={resultcolor.title} size={4.5} />
 			<div className="fruit-img">
-				<StyledImage src={`/img/result2fruit${0}.png`} alt="결과 과일" fill priority />
+				<StyledImage src={`/img/result2fruit${selectType}.png`} alt="결과 과일" fill priority />
 				<div className="count">
 					<div className="text1">{score}</div>
 					<div className="text2">/ 10개</div>
