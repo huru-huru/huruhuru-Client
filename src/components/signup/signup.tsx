@@ -41,6 +41,7 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 		const success = await handleClick();
 		if (!success) {
 			setIsSignupFailed(true);
+			alert('이미 존재하는 닉네임입니다.');
 		} else {
 			goTest();
 		}
@@ -62,6 +63,7 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 						onChange={handleNickNameChange}
 						value={nickname}
 					/>
+					<Text2 failed={isSignupFailed}>이미 존재하는 닉네임입니다.</Text2>
 					<Input1
 						failed={isSignupFailed}
 						type="password"
@@ -129,6 +131,15 @@ const Text = styled.div`
 	line-height: normal;
 	bottom: 0.3rem;
 	letter-spacing: 0.2195rem;
+`;
+
+const Text2 = styled.div<{ failed: boolean }>`
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	color: ${(props) => (props.failed ? '#EF6161' : 'white')};
+	font-size: 1rem;
+	margin-top: 0.5rem;
 `;
 
 const ImageWrapper = styled.div`

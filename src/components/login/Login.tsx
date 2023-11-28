@@ -39,6 +39,7 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 		const success = await handleClick();
 		if (!success) {
 			setIsSignupFailed(true);
+			alert('닉네임이나 비밀번호가 틀렸습니다!');
 		} else {
 			goTest();
 		}
