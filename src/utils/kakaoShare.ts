@@ -1,8 +1,10 @@
 export function initKakao() {
 	// 선언되지 않았을 때만 실행하도록 if문으로 체크
-	if (!window.Kakao.isInitialized()) {
-		window.Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
-	}
+    if (window.Kakao) {
+        if (!window.Kakao.isInitialized()) {
+            window.Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
+        }
+      }
 }
 
 export async function onClickShareKakaoTalk() {
