@@ -48,9 +48,14 @@ export const postResultScore = async (selectedTheme: number, userScore: number) 
 };
 
 // 테스트2 랭킹 가져오기
-export const getRank = async (memberId: number) => {
+export const getRank = async () => {
+	const token = localStorage.getItem('token');
 	try {
-		const response = await axios.get(`${baseURL}score/${memberId}`);
+		const response = await axios.get(`${baseURL}score`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
 		console.log(response);
 		return response;
 	} catch (error) {
