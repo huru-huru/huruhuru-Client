@@ -7,7 +7,7 @@ export const getTestSet = async (category: number, theme: number) => {
 	console.log(category, theme);
 	try {
 		const response = await axios.get(`${baseURL}test?category=${category}&theme=${theme}`);
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -18,7 +18,7 @@ export const getTestSet = async (category: number, theme: number) => {
 export const getCount = async () => {
 	try {
 		const response = await axios.get(`${baseURL}`);
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -39,7 +39,7 @@ export const postResultScore = async (selectedTheme: number, userScore: number) 
 				},
 			},
 		);
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log('에러 :',error);
@@ -56,7 +56,7 @@ export const getRank = async () => {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -69,7 +69,7 @@ export const updateUserCount = async (category: number, theme: number) => {
 	console.log(category, theme);
 	try {
 		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`);
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -86,7 +86,7 @@ export const getThemeResult = async () => {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
