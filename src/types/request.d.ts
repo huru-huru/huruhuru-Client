@@ -14,4 +14,8 @@ export interface Answer {
 	answerContent: string;
 	correct: boolean;
 }
+export interface Score {
+	theme:number,
+	bestScore: number
+}
 
