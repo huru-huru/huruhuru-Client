@@ -7,7 +7,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from 'react-icons/go';
-import { getRank } from '@/apis/test';
+import { getRank, getThemeResult } from '@/apis/test';
+import { Score } from '@/types/request';
 
 type Authority = {
 	authority: string;
@@ -52,6 +53,7 @@ const Result2 = () => {
 	const [myrank, setMyrank] = useState<MyRanking>();
 	const [ranking, setRanking] = useState<Top10[]>([]);
 	const [participant, setParticipant] = useState('');
+	const [themeResult, setThemeResult] = useState<Score[]>();
 
 	const resultcolor =
 		selectType === FRUITS.STRAWBERRY
@@ -75,11 +77,15 @@ const Result2 = () => {
 	useEffect(() => {
 		const getRanking = async () => {
 			try {
-				const result = await getRank();
-				if (result) {
-					setMyrank(result.data.MyRanking);
-					setRanking(result.data.Top10);
-					setParticipant(result.data.test2Count);
+				const rankResult = await getRank();
+				const userResult = await getThemeResult();
+				if (rankResult) {
+					setMyrank(rankResult.data.MyRanking);
+					setRanking(rankResult.data.Top10);
+					setParticipant(rankResult.data.test2Count);
+				}
+				if (userResult) {
+					setThemeResult(userResult.data);
 				}
 			} catch (error) {
 				console.error('Error fetching test set:', error);
@@ -121,7 +127,7 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">8</span>/10
+							<span className="bold">{themeResult?.find(data => data.theme === 0)?.bestScore ? themeResult?.find(data => data.theme === 0)?.bestScore : 0}</span>/10
 						</span>
 					</div>
 					<div>학교</div>
@@ -129,7 +135,7 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">8</span>/10
+							<span className="bold">{themeResult?.find(data => data.theme === 3)?.bestScore ? themeResult?.find(data => data.theme === 3)?.bestScore : 0}</span>/10
 						</span>
 					</div>
 					<div>TV/연예</div>
@@ -137,7 +143,7 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">8</span>/10
+							<span className="bold">{themeResult?.find(data => data.theme === 2)?.bestScore ? themeResult?.find(data => data.theme === 2)?.bestScore : 0}</span>/10
 						</span>
 					</div>
 					<div>문구점</div>
@@ -147,7 +153,7 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">8</span>/10
+							<span className="bold">{themeResult?.find(data => data.theme === 5)?.bestScore ? themeResult?.find(data => data.theme === 5)?.bestScore : 0}</span>/10
 						</span>
 					</div>
 					<div>음식</div>
@@ -155,7 +161,7 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">8</span>/10
+							<span className="bold">{themeResult?.find(data => data.theme === 4)?.bestScore ? themeResult?.find(data => data.theme === 4)?.bestScore : 0}</span>/10
 						</span>
 					</div>
 					<div>게임</div>
@@ -163,7 +169,7 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">8</span>/10
+							<span className="bold">{themeResult?.find(data => data.theme === 1)?.bestScore ? themeResult?.find(data => data.theme === 1)?.bestScore : 0}</span>/10
 						</span>
 					</div>
 					<div>의류/생활</div>

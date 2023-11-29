@@ -76,3 +76,20 @@ export const updateUserCount = async (category: number, theme: number) => {
 		return false;
 	}
 };
+
+// 각각 테마 점수 가져오기
+export const getThemeResult = async () => {
+	const token = localStorage.getItem('token');
+	try {
+		const response = await axios.get(`${baseURL}total`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		console.log(response);
+		return response;
+	} catch (error) {
+		console.log(error);
+		return false;
+	}
+};
