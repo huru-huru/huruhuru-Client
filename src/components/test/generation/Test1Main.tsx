@@ -226,8 +226,13 @@ const QuestionSection = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	.source {
+		width: 50%;
 		font-size: 1rem;
 		color: #6f6f6f;
 		margin-bottom: 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align : center;
 	}
 `;
