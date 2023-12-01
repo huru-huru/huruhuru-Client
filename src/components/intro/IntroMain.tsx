@@ -29,11 +29,19 @@ const IntroMain = () => {
 		switch (selectType) {
 			case '1':
 				return (
-					<TitleDesignText text="테스트 1" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+					<>
+					<TitleDesignText text="2000년대 추억팔이" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+					<TitleDesignText text="고고씽" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+					<SubTitle>2000년대의 당신은 몇 살이었나요?</SubTitle>
+					</>
 				);
 			case '2':
 				return (
-					<TitleDesignText text="테스트 2" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+					<>
+					<TitleDesignText text="2000년대 유행" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+					<TitleDesignText text="랭킹 퀴즈" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+					<SubTitle>2000년대의 유행은 내가 제일 잘 알지!</SubTitle>
+					</>
 				);
 			default:
 				return <div>테스트가 존재하지 않습니다</div>; // 나중에 에러 컴포넌트 반환
@@ -65,12 +73,10 @@ const IntroMain = () => {
 			<Wrapper>
 				<TitleWrapper>
 					{renderMissionComponent()}
-					<SubTitle>이 테스트는 1970년</SubTitle>
-					<SubTitle>왕가탕후루 중앙대본점에서 시작되어...</SubTitle>
 				</TitleWrapper>
 				{/* <BtnWrapper onClick={() => handleClick(INTRO_BTN.LOGIN)}> */}
 				<ImageWrapper>
-					<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />
+				{selectType === '1' ?<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />:<StyledImage src="/img/huru3.png" alt={'오렌지'} fill priority />}
 				</ImageWrapper>
 				{selectType === '1' ? (
 					<BtnWrapper onClick={goTest}>

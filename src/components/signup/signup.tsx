@@ -41,7 +41,7 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 		const success = await handleClick();
 		if (!success) {
 			setIsSignupFailed(true);
-			alert('이미 존재하는 닉네임입니다.');
+			// alert('이미 존재하는 닉네임입니다.');
 		} else {
 			goTest();
 		}
@@ -164,6 +164,7 @@ const Input1 = styled.input<{ failed: boolean }>`
 	font-weight: 400;
 	line-height: normal;
 	padding: 1.5rem;
+	border-radius: 1rem;
 	margin-top: 1rem;
 	border: 1px solid ${(props) => (props.failed ? '#EF6161' : '#f5f5f5')};
 `;

@@ -68,7 +68,7 @@ const Login = ({ closeModal, goTest }: ModalProps) => {
 						onChange={handlePasswordChange}
 						value={password}
 					/>
-					<FindPassWord>비밀번호를 잊어버리셨나요?</FindPassWord>
+					{/* <FindPassWord>비밀번호를 잊어버리셨나요?</FindPassWord> */}
 				</InputWrapper>
 				<BtnWrapper onClick={go}>
 					<SelectButton
