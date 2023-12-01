@@ -6,7 +6,6 @@ import styled from 'styled-components';
 const loading = () => {
 	return (
 		<LoadingSection>
-			<Image src="/img/loadingImage.png" alt="로딩" width={180} height={180} />
 			<div className='text'>🍇 로 딩 중 🥝</div>
 		</LoadingSection>
 	);
