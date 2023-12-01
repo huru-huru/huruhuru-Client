@@ -10,7 +10,7 @@ import { GoTriangleDown } from 'react-icons/go';
 import { getRank, getThemeResult } from '@/apis/test';
 import { Score } from '@/types/request';
 import ShareButton from '@/components/common/ShareButton';
-import { onClickShareKakaoTalk, onClickShareResult2KakaoTalk } from '@/utils/kakaoShare';
+import { initKakao, onClickShareKakaoTalk, onClickShareResult2KakaoTalk } from '@/utils/kakaoShare';
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 
 type Authority = {
@@ -76,6 +76,10 @@ const Result2 = () => {
 	const handleClick = (props: string) => {
 		router.push(`${props}`);
 	};
+
+	useEffect(() => {
+		initKakao();
+	}, []);
 
 	useEffect(() => {
 		const getRanking = async () => {

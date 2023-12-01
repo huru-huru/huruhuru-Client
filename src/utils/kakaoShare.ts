@@ -1,14 +1,11 @@
 export function initKakao() {
-	// 선언되지 않았을 때만 실행하도록 if문으로 체크
-	if (window.Kakao) {
-		try {
-			if (!window.Kakao.isInitialized()) {
-				console.log('api 키 세팅완료');
-				window.Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
-			}
-		} catch (error) {
-			console.error('Error initializing Kakao:', error);
+	try {
+		if (!window.Kakao.isInitialized()) {
+			console.log('api 키 세팅완료');
+			window.Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
 		}
+	} catch (error) {
+		console.error('Error initializing Kakao:', error);
 	}
 }
 
