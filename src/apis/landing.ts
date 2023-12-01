@@ -4,6 +4,6 @@ const baseURL = `https://huruhuru.kro.kr/`;
 
 export const participants = async () => {
 	const result = await axios.get(`${baseURL}`);
-	console.log(result);
+	// console.log(result);
 	return result.data;
 };

@@ -4,10 +4,10 @@ const baseURL = `https://huruhuru.kro.kr/`;
 
 // 테스트 셋 가져오기
 export const getTestSet = async (category: number, theme: number) => {
-	console.log(category, theme);
+	// console.log(category, theme);
 	try {
 		const response = await axios.get(`${baseURL}test?category=${category}&theme=${theme}`);
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -66,7 +66,7 @@ export const getRank = async () => {
 
 // 테스트 참여자수 증가
 export const updateUserCount = async (category: number, theme: number) => {
-	console.log(category, theme);
+	// console.log(category, theme);
 	try {
 		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`);
 		// console.log(response);
