@@ -36,7 +36,7 @@ const Result1 = () => {
 		selectGeneration === 0
 			? {
 					title: '상콤발랄 10대',
-					subTitle: '마라탕후루~ 츄베릅',
+					subTitle: '마라탕후루~ 츄베릅 😋',
 					text1: '지금 유행을 주도하는 당신!',
 					text2: '레트로 감성을 얻고 싶다면, 응답하라 시리즈를 좀 보고 와-!',
 					text3: '진정한 Y2K 감성을 얻고 싶다면, 테스트를 더 진행해보는 것은 어때?',
@@ -52,7 +52,7 @@ const Result1 = () => {
 			: selectGeneration === 2
 			? {
 					title: '40-50대',
-					subTitle: '라떼는 말이야~ Latte is Horse',
+					subTitle: '라떼는 말이야~ Latte is Horse 🐴',
 					text1: '레트로 끝판왕인 당신!',
 					text2: '여기에 없는 추억이 있다면 당장 공유해줘!',
 					text3: '오랜만에 추억을 친구들과 함께 이야기 나누는 것은 어떨까?',
@@ -126,14 +126,14 @@ const Result1 = () => {
 					</div> */}
 					<FacebookShareButton
 						url={`https://huruhuru.netlify.app/generationTest/result?fruits=${selectType}&generation=${selectGeneration}`}
-						quote={`🍊 나의 탕후루는... ${resultContent.subTitle}`}
+						quote={`🍊 나의 탕후루는... ${resultContent.title} 탕후루! ${resultContent.subTitle}`}
 						hashtag={`#탕후루테스트 #학교앞탕후루`}
 					>
 						<FacebookIcon size={40} round />
 					</FacebookShareButton>
 					<TwitterShareButton
 						url={`https://huruhuru.netlify.app/generationTest/result?fruits=${selectType}&generation=${selectGeneration}`}
-						title={`🍊 나의 탕후루는... ${resultContent.subTitle}`}
+						title={`🍊 나의 탕후루는... ${resultContent.title} 탕후루! ${resultContent.subTitle}`}
 						hashtags={['탕후루테스트', '학교앞탕후루']}
 					>
 						<TwitterIcon size={40} round />
