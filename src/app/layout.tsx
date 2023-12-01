@@ -4,6 +4,9 @@ import StyledComponentsRegistry from './lib/registry';
 import RecoidContextProvider from './recoilContextProvider';
 
 export const metadata: Metadata = {
+	verification :{
+		google : 'EOz8bF08VwtMDtyyB7n5kcMxUo5ARoeoIqnIeC8_haM'
+	},
 	title: '학교 앞 탕후루',
 	description: '탕후루로 보는 2000년대 공감 테스트',
 	icons: {
