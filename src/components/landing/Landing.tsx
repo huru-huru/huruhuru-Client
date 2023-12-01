@@ -32,14 +32,14 @@ const LandingSection = () => {
 						router.push('/intro?type=1');
 					}}
 				>
-					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 1" />
+					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="2000년대 추억팔이 고고씽" />
 				</BtnWrapper>
 				<BtnWrapper2
 					onClick={() => {
 						router.push('/intro?type=2');
 					}}
 				>
-					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="테스트 2" />
+					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="너, 2000년대 얼마나 아니?" />
 				</BtnWrapper2>
 				<Footer>지금까지 {num}명이 참여했어요!!</Footer>
 			</MainWrapper>

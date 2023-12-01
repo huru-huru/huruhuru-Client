@@ -71,19 +71,19 @@ const Test1Main = () => {
 	useEffect(() => {
 		// currentQuestion이 변경될 때마다 answerList를 섞어서 상태를 업데이트
 		shuffleAnswerList();
-	  }, [currentQuestion]);
+	}, [currentQuestion]);
 
 	const shuffleAnswerList = () => {
 		// Fisher-Yates 알고리즘을 사용하여 배열을 섞음
 		const shuffledArray = currentQuestion?.answerList;
-		if(shuffledArray){
+		if (shuffledArray) {
 			for (let i = shuffledArray.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
 				[shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-			  }
-		setShuffledAnswerList(shuffledArray);
+			}
+			setShuffledAnswerList(shuffledArray);
 		}
-	  };
+	};
 
 	// resultSet에서 가장 큰 값의 인덱스를 랜덤으로 반환하는 함수
 	const randomIndexOfMaxValue = () => {
@@ -132,7 +132,9 @@ const Test1Main = () => {
 		if (selectedAge === 0) {
 			incrementAtIndex(2);
 		}
-		setProgress(progress + 1);
+		if (progress < 11) {
+			setProgress(progress + 1);
+		}
 	};
 
 	return (
@@ -145,7 +147,7 @@ const Test1Main = () => {
 				<QuestionImg>
 					<img src={currentQuestion?.image} />
 				</QuestionImg>
-				<div className='source'>출처 : {currentQuestion?.image_url}</div>
+				<div className="source">출처 : {currentQuestion?.image_url}</div>
 				{shuffledAnswerList?.map((answerOption: any, index: number) => (
 					// 해당 답변의 인덱스 값이 인자로 들어감
 					<BtnWrapper key={index} onClick={() => handleButtonClick(answerOption.id)}>
@@ -223,9 +225,9 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	.source{
-		font-size : 1rem;
-		color: #6F6F6F;
+	.source {
+		font-size: 1rem;
+		color: #6f6f6f;
 		margin-bottom: 3rem;
 	}
 `;

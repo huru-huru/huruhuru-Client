@@ -67,7 +67,9 @@ const Test2Main = () => {
 			// 맞으면 점수 추가
 			setCrushResult(crushResult + 1);
 		}
-		setProgress(progress + 1);
+		if (progress < 11) {
+			setProgress(progress + 1);
+		}
 	};
 
 	return (

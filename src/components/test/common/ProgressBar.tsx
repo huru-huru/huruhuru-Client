@@ -150,7 +150,7 @@ const ProgressBar = (props: ProgressBarPropsType) => {
 				<div className="cup">
 					<StyledImage src="/img/papercup.png" alt="진행도 막대" fill priority />
 					<div className="count">
-						<div className="text1">{progress + 1}</div>
+					<div className="text1">{progress < 10 ? progress + 1 : progress}</div>
 						<div className="text2">/ 10개</div>
 					</div>
 				</div>

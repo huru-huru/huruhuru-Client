@@ -9,6 +9,9 @@ import styled from 'styled-components';
 import { GoTriangleDown } from 'react-icons/go';
 import { getRank, getThemeResult } from '@/apis/test';
 import { Score } from '@/types/request';
+import ShareButton from '@/components/common/ShareButton';
+import { onClickShareKakaoTalk } from '@/utils/kakaoShare';
+import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 
 type Authority = {
 	authority: string;
@@ -127,7 +130,12 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">{themeResult?.find(data => data.theme === 0)?.bestScore ? themeResult?.find(data => data.theme === 0)?.bestScore : 0}</span>/10
+							<span className="bold">
+								{themeResult?.find((data) => data.theme === 0)?.bestScore
+									? themeResult?.find((data) => data.theme === 0)?.bestScore
+									: 0}
+							</span>
+							/10
 						</span>
 					</div>
 					<div>학교</div>
@@ -135,7 +143,12 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">{themeResult?.find(data => data.theme === 3)?.bestScore ? themeResult?.find(data => data.theme === 3)?.bestScore : 0}</span>/10
+							<span className="bold">
+								{themeResult?.find((data) => data.theme === 3)?.bestScore
+									? themeResult?.find((data) => data.theme === 3)?.bestScore
+									: 0}
+							</span>
+							/10
 						</span>
 					</div>
 					<div>TV/연예</div>
@@ -143,7 +156,12 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">{themeResult?.find(data => data.theme === 2)?.bestScore ? themeResult?.find(data => data.theme === 2)?.bestScore : 0}</span>/10
+							<span className="bold">
+								{themeResult?.find((data) => data.theme === 2)?.bestScore
+									? themeResult?.find((data) => data.theme === 2)?.bestScore
+									: 0}
+							</span>
+							/10
 						</span>
 					</div>
 					<div>문구점</div>
@@ -153,7 +171,12 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">{themeResult?.find(data => data.theme === 5)?.bestScore ? themeResult?.find(data => data.theme === 5)?.bestScore : 0}</span>/10
+							<span className="bold">
+								{themeResult?.find((data) => data.theme === 5)?.bestScore
+									? themeResult?.find((data) => data.theme === 5)?.bestScore
+									: 0}
+							</span>
+							/10
 						</span>
 					</div>
 					<div>음식</div>
@@ -161,7 +184,12 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">{themeResult?.find(data => data.theme === 4)?.bestScore ? themeResult?.find(data => data.theme === 4)?.bestScore : 0}</span>/10
+							<span className="bold">
+								{themeResult?.find((data) => data.theme === 4)?.bestScore
+									? themeResult?.find((data) => data.theme === 4)?.bestScore
+									: 0}
+							</span>
+							/10
 						</span>
 					</div>
 					<div>게임</div>
@@ -169,7 +197,12 @@ const Result2 = () => {
 				<CircleGroup>
 					<div className="circle">
 						<span className="result">
-							<span className="bold">{themeResult?.find(data => data.theme === 1)?.bestScore ? themeResult?.find(data => data.theme === 1)?.bestScore : 0}</span>/10
+							<span className="bold">
+								{themeResult?.find((data) => data.theme === 1)?.bestScore
+									? themeResult?.find((data) => data.theme === 1)?.bestScore
+									: 0}
+							</span>
+							/10
 						</span>
 					</div>
 					<div>의류/생활</div>
@@ -195,29 +228,45 @@ const Result2 = () => {
 			<ResultShare>
 				<Title>결과 공유하기</Title>
 				<ShareBtnGroup>
-					<div className="share">
-						<StyledImage src={`/img/shareLogo0.png`} alt="인스타 공유" fill priority />
-					</div>
-					<div className="share">
-						<StyledImage src={`/img/shareLogo1.png`} alt="페북 공유" fill priority />
-					</div>
-					<div className="share">
-						<StyledImage src={`/img/shareLogo2.png`} alt="트위터 공유" fill priority />
-					</div>
-					<div className="share">
-						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
-					</div>
+					<FacebookShareButton
+						url={`https://huruhuru.netlify.app/`}
+						quote={`내가 깨트린 탕후루는 ${myrank?.member?.totalBestScore}개! 기록 깨러가기🍓`}
+						hashtag={`#탕후루테스트 #학교앞탕후루`}
+					>
+						<FacebookIcon size={40} round />
+					</FacebookShareButton>
+					<TwitterShareButton
+						url={`https://huruhuru.netlify.app/`}
+						title={`내가 깨트린 탕후루는 ${myrank?.member?.totalBestScore}개! 기록 깨러가기🍓`}
+						hashtags={['탕후루테스트', '학교앞탕후루']}
+					>
+						<TwitterIcon size={40} round />
+					</TwitterShareButton>
+					<Image
+						src={`/img/shareLogo3.png`}
+						alt="카톡 공유"
+						width={40}
+						height={40}
+						priority
+						onClick={onClickShareKakaoTalk}
+					/>
 				</ShareBtnGroup>
 			</ResultShare>
+
 			<TestShare>
 				<Title>탕후루 친구랑 같이 먹자!</Title>
 				<div className="sub">친구들에게 테스트 공유하기</div>
 				<ShareBtnGroup>
+					<ShareButton where="result" />
 					<div className="share2">
-						<StyledImage src={`/img/shareLogo4.png`} alt="공유" fill priority />
-					</div>
-					<div className="share2">
-						<StyledImage src={`/img/shareLogo3.png`} alt="카톡 공유" fill priority />
+						<Image
+							src={`/img/shareLogo3.png`}
+							alt="카톡 공유"
+							width={40}
+							height={40}
+							priority
+							onClick={onClickShareKakaoTalk}
+						/>
 					</div>
 				</ShareBtnGroup>
 			</TestShare>
