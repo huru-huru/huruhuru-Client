@@ -2,10 +2,11 @@ import { Metadata } from 'next';
 import './globals.css';
 import StyledComponentsRegistry from './lib/registry';
 import RecoidContextProvider from './recoilContextProvider';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
-	verification :{
-		google : 'EOz8bF08VwtMDtyyB7n5kcMxUo5ARoeoIqnIeC8_haM'
+	verification: {
+		google: 'EOz8bF08VwtMDtyyB7n5kcMxUo5ARoeoIqnIeC8_haM',
 	},
 	title: '학교 앞 탕후루',
 	description: '탕후루로 보는 2000년대 공감 테스트',
@@ -42,17 +43,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html>
-			<body>
-				<StyledComponentsRegistry>
+			<StyledComponentsRegistry>
+				<body>
 					<RecoidContextProvider>{children}</RecoidContextProvider>
-				</StyledComponentsRegistry>
-			</body>
+				</body>
+				<Script src="https://developers.kakao.com/sdk/js/kakao.js" async />
+			</StyledComponentsRegistry>
 		</html>
 	);
 }
 
 declare global {
 	interface Window {
-	  Kakao: any;
+		Kakao: any;
 	}
-  }
+}

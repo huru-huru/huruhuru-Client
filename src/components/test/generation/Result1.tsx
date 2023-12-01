@@ -72,7 +72,13 @@ const Result1 = () => {
 	};
 
 	useEffect(() => {
-		initKakao();
+		if (typeof window !== 'undefined') {
+			const { Kakao } = window;
+			if (!Kakao.isInitialized()) {
+				// SDK 초기화 부분, 본인의 API KEY 입력
+				Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
+			}
+		}
 	}, []);
 
 	return (
@@ -358,7 +364,7 @@ const ShareBtnGroup = styled.div`
 	}
 	.share2 {
 		width: 18.6%;
-		cursor:pointer;
+		cursor: pointer;
 	}
 `;
 

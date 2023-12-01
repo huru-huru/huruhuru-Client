@@ -4,9 +4,6 @@ import React from 'react';
 const page = () => {
 	return (
 		<>
-		<head>
-		<script defer src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-		</head>
 			<Result1 />
 		</>
 	);
