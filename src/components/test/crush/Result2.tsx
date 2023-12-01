@@ -608,6 +608,7 @@ const Ranking = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 3rem;
 `;
 
 const RankWrapper = styled.div<{ $bordercolor: string }>`
