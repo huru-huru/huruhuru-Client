@@ -116,7 +116,7 @@ const Result1 = () => {
 					handleClick('/');
 				}}
 			>
-				너, 2000년대 얼마나 아니?
+				다른 테스트도 하러가기 !
 			</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>

@@ -223,7 +223,7 @@ const Result2 = () => {
 					handleClick('/');
 				}}
 			>
-				테스트1도 하러가기
+				2000년대 추억팔이 고고씽
 			</Btn2>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
