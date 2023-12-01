@@ -1,13 +1,13 @@
-export function initKakao() {
-	try {
-		if (!window.Kakao.isInitialized()) {
-			console.log('api 키 세팅완료');
-			window.Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
-		}
-	} catch (error) {
-		console.error('Error initializing Kakao:', error);
-	}
-}
+// export function initKakao() {
+// 	try {
+// 		if (!window.Kakao.isInitialized()) {
+// 			console.log('api 키 세팅완료');
+// 			window.Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
+// 		}
+// 	} catch (error) {
+// 		console.error('Error initializing Kakao:', error);
+// 	}
+// }
 
 export async function onClickShareKakaoTalk() {
 	console.log('공유하기 버튼 실행');

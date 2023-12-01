@@ -7,11 +7,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from 'react-icons/go';
-import { initKakao, onClickShareKakaoTalk, onClickShareResult1KakaoTalk } from '@/utils/kakaoShare';
+import { onClickShareKakaoTalk, onClickShareResult1KakaoTalk } from '@/utils/kakaoShare';
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 import ShareButton from '@/components/common/ShareButton';
-import { title } from 'process';
-import KakaoShareButton from '@/components/common/KakaoShareButton';
 
 const Result1 = () => {
 	const router = useRouter();
@@ -127,7 +125,7 @@ const Result1 = () => {
 			>
 				다른 테스트도 하러가기 !
 			</Btn2>
-			<KakaoShareButton/>
+			{/* <KakaoShareButton/> */}
 			<ResultShare>
 				<Title>결과 공유하기</Title>
 				<ShareBtnGroup>

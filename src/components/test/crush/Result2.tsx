@@ -10,7 +10,7 @@ import { GoTriangleDown } from 'react-icons/go';
 import { getRank, getThemeResult } from '@/apis/test';
 import { Score } from '@/types/request';
 import ShareButton from '@/components/common/ShareButton';
-import { initKakao, onClickShareKakaoTalk, onClickShareResult2KakaoTalk } from '@/utils/kakaoShare';
+import { onClickShareKakaoTalk, onClickShareResult2KakaoTalk } from '@/utils/kakaoShare';
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 
 type Authority = {
@@ -78,7 +78,13 @@ const Result2 = () => {
 	};
 
 	useEffect(() => {
-		initKakao();
+		if (typeof window !== 'undefined') {
+			const { Kakao } = window;
+			if (!Kakao.isInitialized()) {
+				// SDK 초기화 부분, 본인의 API KEY 입력
+				Kakao.init(process.env.NEXT_PUBLIC_API_KEY);
+			}
+		}
 	}, []);
 
 	useEffect(() => {
