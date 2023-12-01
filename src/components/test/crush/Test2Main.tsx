@@ -80,7 +80,8 @@ const Test2Main = () => {
 		<>
 			{loading ? (
 				<LoadingSection>
-					<Image src="/img/loading.png" alt="로딩" width={375} height={812} />
+					<Image src={`/img/loadingImage.png`} alt="로딩" width={150} height={150} />
+					<div className="text">과연 탕후루에 대한 맛 평가는 ?</div>
 				</LoadingSection>
 			) : (
 				<Wrapper $bg={testcolors.bg}>
@@ -244,5 +245,15 @@ const LoadingSection = styled.div`
 	bottom: 0;
 	@media (min-width: 490px) {
 		width: 490px;
+	}
+	color: #000;
+	font-family: SKYBORI;
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-align: center;
+	.text{
+		margin-top: 2rem;
 	}
 `;
