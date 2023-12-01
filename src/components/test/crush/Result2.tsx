@@ -10,7 +10,7 @@ import { GoTriangleDown } from 'react-icons/go';
 import { getRank, getThemeResult } from '@/apis/test';
 import { Score } from '@/types/request';
 import ShareButton from '@/components/common/ShareButton';
-import { onClickShareKakaoTalk } from '@/utils/kakaoShare';
+import { onClickShareKakaoTalk, onClickShareResult2KakaoTalk } from '@/utils/kakaoShare';
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 
 type Authority = {
@@ -242,14 +242,21 @@ const Result2 = () => {
 					>
 						<TwitterIcon size={40} round />
 					</TwitterShareButton>
-					<Image
-						src={`/img/shareLogo3.png`}
-						alt="카톡 공유"
-						width={40}
-						height={40}
-						priority
-						onClick={onClickShareKakaoTalk}
-					/>
+					<KaKaoShareButton>
+						<Image
+							src={`/img/shareLogo3.png`}
+							alt="카톡 공유"
+							width={40}
+							height={40}
+							priority
+							onClick={() =>
+								onClickShareResult2KakaoTalk(
+									`내가 깨트린 탕후루는 ${myrank?.member?.totalBestScore}개!`,
+									`${participant}명 중 ${myrank?.ranking}등을 했어요😋`,
+								)
+							}
+						/>
+					</KaKaoShareButton>
 				</ShareBtnGroup>
 			</ResultShare>
 
@@ -559,6 +566,7 @@ const ShareBtnGroup = styled.div`
 	}
 	.share2 {
 		width: 18.6%;
+		cursor: pointer;
 	}
 `;
 
@@ -648,4 +656,8 @@ const Name = styled.div`
 const Score = styled.div`
 	width: 10rem;
 	text-align: end;
+`;
+
+const KaKaoShareButton = styled.div`
+	cursor: pointer;
 `;

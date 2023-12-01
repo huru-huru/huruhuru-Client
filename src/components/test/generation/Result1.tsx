@@ -7,9 +7,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { GoTriangleDown } from 'react-icons/go';
-import { initKakao, onClickShareKakaoTalk } from '@/utils/kakaoShare';
+import { initKakao, onClickShareKakaoTalk, onClickShareResult1KakaoTalk } from '@/utils/kakaoShare';
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 import ShareButton from '@/components/common/ShareButton';
+import { title } from 'process';
 
 const Result1 = () => {
 	const router = useRouter();
@@ -59,6 +60,7 @@ const Result1 = () => {
 			  }
 			: {
 					title: '',
+					subTitle: '',
 					content: '',
 					text1: '',
 					text2: '',
@@ -138,14 +140,16 @@ const Result1 = () => {
 					>
 						<TwitterIcon size={40} round />
 					</TwitterShareButton>
-					<Image
-						src={`/img/shareLogo3.png`}
-						alt="카톡 공유"
-						width={40}
-						height={40}
-						priority
-						onClick={onClickShareKakaoTalk}
-					/>
+					<KaKaoShareButton>
+						<Image
+							src={`/img/shareLogo3.png`}
+							alt="카톡 공유"
+							width={40}
+							height={40}
+							priority
+							onClick={() => onClickShareResult1KakaoTalk(resultContent.title, resultContent.subTitle)}
+						/>
+					</KaKaoShareButton>
 				</ShareBtnGroup>
 			</ResultShare>
 
@@ -153,16 +157,16 @@ const Result1 = () => {
 				<Title>탕후루 친구랑 같이 먹자!</Title>
 				<div className="sub">친구들에게 테스트 공유하기</div>
 				<ShareBtnGroup>
-					<ShareButton where='result'/>
+					<ShareButton where="result" />
 					<div className="share2">
-					<Image
-						src={`/img/shareLogo3.png`}
-						alt="카톡 공유"
-						width={40}
-						height={40}
-						priority
-						onClick={onClickShareKakaoTalk}
-					/>
+						<Image
+							src={`/img/shareLogo3.png`}
+							alt="카톡 공유"
+							width={40}
+							height={40}
+							priority
+							onClick={onClickShareKakaoTalk}
+						/>
 					</div>
 				</ShareBtnGroup>
 			</TestShare>
@@ -354,5 +358,10 @@ const ShareBtnGroup = styled.div`
 	}
 	.share2 {
 		width: 18.6%;
+		cursor:pointer;
 	}
+`;
+
+const KaKaoShareButton = styled.div`
+	cursor: pointer;
 `;
