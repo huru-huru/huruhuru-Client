@@ -17,6 +17,7 @@ const Test2Main = () => {
 	const [testSet, setTestSet] = useState<QuestionData[]>();
 	const [currentQuestion, setQuestion] = useState<QuestionData>();
 	const [crushResult, setCrushResult] = useState(0);
+	const [loading, setLoading] = useState(false);
 	const selectType = parseInt(params.get('fruits') || '0', 10);
 	const testcolors =
 		selectType === FRUITS.STRAWBERRY
@@ -52,9 +53,12 @@ const Test2Main = () => {
 	useEffect(() => {
 		if (progress === 10) {
 			// console.log(crushResult);
-			postResultScore(selectType,crushResult);
+			postResultScore(selectType, crushResult);
 			updateUserCount(2, selectType);
-			router.push(`crushTest/result?fruits=${selectType}&score=${crushResult}`);
+			setLoading(true);
+			setTimeout(() => {
+				router.push(`crushTest/result?fruits=${selectType}&score=${crushResult}`);
+			}, 500);
 		} else {
 			if (testSet) {
 				setQuestion(testSet[progress]);
@@ -73,46 +77,54 @@ const Test2Main = () => {
 	};
 
 	return (
-		<Wrapper $bg={testcolors.bg}>
-			<TestHeader fruit={selectType} />
-			<ProgressBar fruit={selectType} progress={progress} />
+		<>
+			{loading ? (
+				<LoadingSection>
+					<Image src="/img/loading.png" alt="로딩" width={375} height={812} />
+				</LoadingSection>
+			) : (
+				<Wrapper $bg={testcolors.bg}>
+					<TestHeader fruit={selectType} />
+					<ProgressBar fruit={selectType} progress={progress} />
 
-			<QuestionSection>
-				<div className="question">{currentQuestion?.question}</div>
-				<QuestionImg>
-					<img src={currentQuestion?.image} />
-				</QuestionImg>
-				<div className='source'>출처 : {currentQuestion?.image_url}</div>
-				<BtnSection>
-					<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[0].correct)}>
-						<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-							{currentQuestion?.answerList[0].answerContent}
-						</BtnBox>
-						<ShadowBox />
-					</BtnWrapper>
-					<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[1].correct)}>
-						<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-							{currentQuestion?.answerList[1].answerContent}
-						</BtnBox>
-						<ShadowBox />
-					</BtnWrapper>
-				</BtnSection>
-				<BtnSection>
-					<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[2].correct)}>
-						<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-							{currentQuestion?.answerList[2].answerContent}
-						</BtnBox>
-						<ShadowBox />
-					</BtnWrapper>
-					<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[3].correct)}>
-						<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
-							{currentQuestion?.answerList[3].answerContent}
-						</BtnBox>
-						<ShadowBox />
-					</BtnWrapper>
-				</BtnSection>
-			</QuestionSection>
-		</Wrapper>
+					<QuestionSection>
+						<div className="question">{currentQuestion?.question}</div>
+						<QuestionImg>
+							<img src={currentQuestion?.image} />
+						</QuestionImg>
+						<div className="source">출처 : {currentQuestion?.image_url}</div>
+						<BtnSection>
+							<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[0].correct)}>
+								<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
+									{currentQuestion?.answerList[0].answerContent}
+								</BtnBox>
+								<ShadowBox />
+							</BtnWrapper>
+							<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[1].correct)}>
+								<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
+									{currentQuestion?.answerList[1].answerContent}
+								</BtnBox>
+								<ShadowBox />
+							</BtnWrapper>
+						</BtnSection>
+						<BtnSection>
+							<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[2].correct)}>
+								<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
+									{currentQuestion?.answerList[2].answerContent}
+								</BtnBox>
+								<ShadowBox />
+							</BtnWrapper>
+							<BtnWrapper onClick={() => handleButtonClick(currentQuestion?.answerList[3].correct)}>
+								<BtnBox $bgColor={testcolors.btnbg} $textColor={testcolors.btntext}>
+									{currentQuestion?.answerList[3].answerContent}
+								</BtnBox>
+								<ShadowBox />
+							</BtnWrapper>
+						</BtnSection>
+					</QuestionSection>
+				</Wrapper>
+			)}
+		</>
 	);
 };
 
@@ -182,9 +194,9 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	.source{
-		font-size : 1rem;
-		color: #6F6F6F;
+	.source {
+		font-size: 1rem;
+		color: #6f6f6f;
 		margin-bottom: 3rem;
 	}
 `;
@@ -217,4 +229,20 @@ const ShadowBox = styled.div`
 	border-radius: 4.45313rem;
 	background: #646464;
 	cursor: pointer;
+`;
+
+const LoadingSection = styled.div`
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff0ee;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+	@media (min-width: 490px) {
+		width: 490px;
+	}
 `;

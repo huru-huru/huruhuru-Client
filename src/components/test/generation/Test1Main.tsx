@@ -18,6 +18,7 @@ const Test1Main = () => {
 	const [testSet, setTestSet] = useState<QuestionData[]>();
 	const [currentQuestion, setQuestion] = useState<QuestionData>();
 	const [shuffledAnswerList, setShuffledAnswerList] = useState<Answer[]>();
+	const [loading, setLoading] = useState(false);
 
 	// 결과 저장 state
 	const [resultSet, setResult] = useState([0, 0, 0]);
@@ -60,7 +61,10 @@ const Test1Main = () => {
 			// 인덱스 0 : 10대, 1 : 20대, 2 : 부모님 세대
 			const gen = randomIndexOfMaxValue();
 			updateUserCount(1, selectType);
-			router.push(`generationTest/result?fruits=${selectType}&generation=${gen}`);
+			setLoading(true);
+			setTimeout(() => {
+				router.push(`generationTest/result?fruits=${selectType}&generation=${gen}`);
+			}, 500);
 		} else {
 			if (testSet) {
 				setQuestion(testSet[progress]);
@@ -138,29 +142,37 @@ const Test1Main = () => {
 	};
 
 	return (
-		<Wrapper $bg={testcolors.bg}>
-			<TestHeader fruit={selectType} />
-			<ProgressBar fruit={selectType} progress={progress} />
+		<>
+			{loading ? (
+				<LoadingSection>
+					<Image src="/img/loading.png" alt="로딩" width={375} height={812} />
+				</LoadingSection>
+			) : (
+				<Wrapper $bg={testcolors.bg}>
+					<TestHeader fruit={selectType} />
+					<ProgressBar fruit={selectType} progress={progress} />
 
-			<QuestionSection>
-				<div className="question">{currentQuestion?.question}</div>
-				<QuestionImg>
-					<img src={currentQuestion?.image} />
-				</QuestionImg>
-				<div className="source">출처 : {currentQuestion?.image_url}</div>
-				{shuffledAnswerList?.map((answerOption: any, index: number) => (
-					// 해당 답변의 인덱스 값이 인자로 들어감
-					<BtnWrapper key={index} onClick={() => handleButtonClick(answerOption.id)}>
-						<SelectButton
-							bgColor={testcolors.btnbg}
-							size={1.8}
-							text={answerOption.answerContent}
-							textColor={testcolors.btntext}
-						/>
-					</BtnWrapper>
-				))}
-			</QuestionSection>
-		</Wrapper>
+					<QuestionSection>
+						<div className="question">{currentQuestion?.question}</div>
+						<QuestionImg>
+							<img src={currentQuestion?.image} />
+						</QuestionImg>
+						<div className="source">출처 : {currentQuestion?.image_url}</div>
+						{shuffledAnswerList?.map((answerOption: any, index: number) => (
+							// 해당 답변의 인덱스 값이 인자로 들어감
+							<BtnWrapper key={index} onClick={() => handleButtonClick(answerOption.id)}>
+								<SelectButton
+									bgColor={testcolors.btnbg}
+									size={1.8}
+									text={answerOption.answerContent}
+									textColor={testcolors.btntext}
+								/>
+							</BtnWrapper>
+						))}
+					</QuestionSection>
+				</Wrapper>
+			)}
+		</>
 	);
 };
 
@@ -233,6 +245,22 @@ const QuestionSection = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		text-align : center;
+		text-align: center;
+	}
+`;
+
+const LoadingSection = styled.div`
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff0ee;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+	@media (min-width: 490px) {
+		width: 490px;
 	}
 `;
