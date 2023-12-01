@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 		icon: '/img/testIcon.png',
 	},
 	keywords: [
+		'학교 앞 탕후루',
 		'탕후루',
 		'2000년대',
 		'추억',
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
 		'mbti',
 	],
 	openGraph: {
-		title: '탕후루 테스트',
-		description: '탕후루로 보는 2000년대 공감 테스트',
+		title: '학교 앞 탕후루',
+		description: '탕후루로 보는 2000년대 공감 테스트 하러가기!',
 		url: 'https://huruhuru.netlify.app/',
-		siteName: 'Huru',
+		siteName: '학교 앞 탕후루',
 		images: [
 			{
-				url: 'https://huruhuru.netlify.app/img/testOGBanner.png',
+				url: 'https://huruhuru.netlify.app/img/hurutest_ogimg.png',
 			},
 		],
 		type: 'website',
