@@ -11,6 +11,7 @@ import { initKakao, onClickShareKakaoTalk, onClickShareResult1KakaoTalk } from '
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'next-share';
 import ShareButton from '@/components/common/ShareButton';
 import { title } from 'process';
+import KakaoShareButton from '@/components/common/KakaoShareButton';
 
 const Result1 = () => {
 	const router = useRouter();
@@ -126,6 +127,7 @@ const Result1 = () => {
 			>
 				다른 테스트도 하러가기 !
 			</Btn2>
+			<KakaoShareButton/>
 			<ResultShare>
 				<Title>결과 공유하기</Title>
 				<ShareBtnGroup>
@@ -146,7 +148,7 @@ const Result1 = () => {
 					>
 						<TwitterIcon size={40} round />
 					</TwitterShareButton>
-					<KaKaoShareButton>
+					<KaKaoShareBtn>
 						<Image
 							src={`/img/shareLogo3.png`}
 							alt="카톡 공유"
@@ -155,7 +157,7 @@ const Result1 = () => {
 							priority
 							onClick={() => onClickShareResult1KakaoTalk(resultContent.title, resultContent.subTitle)}
 						/>
-					</KaKaoShareButton>
+					</KaKaoShareBtn>
 				</ShareBtnGroup>
 			</ResultShare>
 
@@ -368,6 +370,6 @@ const ShareBtnGroup = styled.div`
 	}
 `;
 
-const KaKaoShareButton = styled.div`
+const KaKaoShareBtn = styled.div`
 	cursor: pointer;
 `;
