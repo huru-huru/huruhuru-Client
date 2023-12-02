@@ -7,6 +7,7 @@ type SelectButtonPropsType = {
 	bgColor: string;
 	size?: number; // 선택사항
 	textColor?: string;
+	font?:string;
 	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
@@ -17,6 +18,7 @@ const SelectButton = (props: SelectButtonPropsType) => {
 				$bgColor={props.bgColor}
 				$size={props.size || 2}
 				$textColor={props.textColor || ' #464646'}
+				$font={props.font || 'DNF Bit Bit v2'}
 				onClick={props.onClick}
 			>
 				{props.text}
@@ -28,7 +30,7 @@ const SelectButton = (props: SelectButtonPropsType) => {
 
 export default SelectButton;
 
-const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string }>`
+const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string; $font:string }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -40,7 +42,7 @@ const BtnBox = styled.div<{ $bgColor: string; $size: number; $textColor: string 
 	border: 1.187px solid #646464;
 	background: ${(props) => props.$bgColor};
 	color: ${(props) => props.$textColor};
-	font-family: 'DNF Bit Bit v2';
+	font-family: ${(props) => props.$font};
 	line-height: normal;
 	font-size: ${(props) => props.$size}rem;
 	z-index: 1;

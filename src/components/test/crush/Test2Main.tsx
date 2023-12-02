@@ -215,7 +215,7 @@ const BtnBox = styled.div<{ $bgColor: string; $textColor: string }>`
 	border: 1.187px solid #646464;
 	background: ${(props) => props.$bgColor};
 	color: ${(props) => props.$textColor};
-	font-family: 'DNF Bit Bit v2';
+	font-family: SKYBORI;
 	font-weight: 400;
 	font-size: 2rem;
 	z-index: 1;

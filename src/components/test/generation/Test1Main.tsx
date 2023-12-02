@@ -167,6 +167,7 @@ const Test1Main = () => {
 									size={1.8}
 									text={answerOption.answerContent}
 									textColor={testcolors.btntext}
+									font={'SKYBORI'}
 								/>
 							</BtnWrapper>
 						))}
