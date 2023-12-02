@@ -29,7 +29,7 @@ export async function onClickShareResult1KakaoTalk(title: string, content: strin
 					requestUrl: 'https://huruhuru.netlify.app/', // 페이지 url
 					templateId: 101455, // 메시지템플릿 번호
 					templateArgs: {
-						TITLE: `🍊 나의 탕후루는... ${title}탕후루!`, // 제목 텍스트
+						TITLE: `🍊 나의 탕후루는... ${title} 탕후루!`, // 제목 텍스트
 						DESC: content, // 설명 텍스트
 						BTN: '추억여행하러 가기',
 					},
