@@ -226,7 +226,7 @@ const Result2 = () => {
 				$color={resultcolor.textcolor}
 				$bordercolor={resultcolor.border}
 			>
-				탕후루 더 깨러가기
+				탕후루 더 깨러 가기
 			</Btn1>
 			<Btn2
 				onClick={() => {

@@ -123,7 +123,7 @@ const Result1 = () => {
 					handleClick('/');
 				}}
 			>
-				다른 테스트도 하러가기 !
+				다른 테스트도 하러 가기 !
 			</Btn2>
 			{/* <KakaoShareButton/> */}
 			<ResultShare>
