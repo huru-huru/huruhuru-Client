@@ -27,20 +27,29 @@ const LandingSection = () => {
 				<ImgWrapper>
 					<StyledImage src="/img/landing.png" alt="랜딩 이미지" fill priority />
 				</ImgWrapper>
-				<BtnWrapper
-					onClick={() => {
-						router.push('/intro?type=1');
-					}}
-				>
-					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="2000년대 추억팔이 고고씽" />
-				</BtnWrapper>
-				<BtnWrapper2
-					onClick={() => {
-						router.push('/intro?type=2');
-					}}
-				>
-					<SelectButton bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)" text="너, 2000년대 얼마나 아니?" />
-				</BtnWrapper2>
+				<BtnGroup>
+					<BtnWrapper
+						onClick={() => {
+							router.push('/intro?type=1');
+						}}
+					>
+						<SelectButton
+							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
+							text="2000년대 추억팔이 고고씽"
+						/>
+					</BtnWrapper>
+					<BtnWrapper2
+						onClick={() => {
+							router.push('/intro?type=2');
+						}}
+					>
+						<SelectButton
+							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
+							text="너, 2000년대 얼마나 아니?"
+						/>
+					</BtnWrapper2>
+				</BtnGroup>
+
 				<Footer>지금까지 {num}명이 참여했어요!!</Footer>
 			</MainWrapper>
 		</Wrapper>
@@ -65,7 +74,7 @@ const MainWrapper = styled.div`
 	height: 98vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 `;
 
@@ -75,8 +84,8 @@ const TitleWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 3rem;
-	top: 3rem;
+	z-index: 1;
+	margin-top: -25%;
 `;
 
 const SubTitle = styled.div`
@@ -89,7 +98,6 @@ const SubTitle = styled.div`
 	font-weight: 400;
 	line-height: normal;
 	letter-spacing: 1.756px;
-	margin-bottom: 1rem;
 `;
 
 const StyledImage = styled(Image)`
@@ -99,14 +107,24 @@ const StyledImage = styled(Image)`
 `;
 
 const ImgWrapper = styled.div`
-	position: relative;
+	position: absolute;
 	width: 70%;
+	max-width: 364px;
 	max-height: 446px;
 	@media (max-width: 490px) {
 		width: 80%;
 	}
 `;
 
+const BtnGroup = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: -25%;
+`;
 const BtnWrapper = styled.div`
 	width: 80%;
 	position: relative;
@@ -114,7 +132,6 @@ const BtnWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	bottom: 70px;
 	border-radius: 35.625px;
 `;
 
@@ -125,7 +142,6 @@ const BtnWrapper2 = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	bottom: 60px;
 `;
 
 const Footer = styled.div`
