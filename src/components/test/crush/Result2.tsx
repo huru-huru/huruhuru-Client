@@ -54,7 +54,6 @@ const Result2 = () => {
 	const selectType = parseInt(params.get('fruits') || '0', 10);
 	const score = parseInt(params.get('score') || '0', 10);
 	const [myrank, setMyrank] = useState<MyRanking>();
-	const [myrankRanking, setMyrankRanking] = useState<number>(0)
 	const [ranking, setRanking] = useState<Top10[]>([]);
 	const [participant, setParticipant] = useState('');
 	const [themeResult, setThemeResult] = useState<Score[]>();
@@ -97,7 +96,6 @@ const Result2 = () => {
 					setMyrank(rankResult.data.MyRanking);
 					setRanking(rankResult.data.Top10);
 					setParticipant(rankResult.data.test2Count);
-					setMyrankRanking(rankResult.data.MyRanking.ranking);
 				}
 				if (userResult) {
 					setThemeResult(userResult.data);
@@ -134,7 +132,7 @@ const Result2 = () => {
 					<div className="line" />
 					<Info2>
 						<div className="text1">현재 내 순위는 {participant}명 중</div>
-						<div className="total-count">{myrankRanking + 1}</div>
+						<div className="total-count">{myrank?.ranking}</div>
 					</Info2>
 				</div>
 			</ResultBox>
