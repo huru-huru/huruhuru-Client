@@ -120,7 +120,7 @@ const Result2 = () => {
 			</div>
 			<ResultBox $bgcolor={resultcolor.btnbg} $color={resultcolor.textcolor} $bordercolor={resultcolor.border}>
 				<div className="box-top">
-					<div className="result-title">내 탕후루 깨기 현황은?</div>
+					<div className="result-title">{myrank?.member?.nickname}님의 탕후루 깨기 현황은?</div>
 					<GoTriangleDown className="icon" size="15%" color={resultcolor.btnbg} />
 				</div>
 
@@ -226,7 +226,7 @@ const Result2 = () => {
 				$color={resultcolor.textcolor}
 				$bordercolor={resultcolor.border}
 			>
-				다른 탕후루도 맛보기
+				탕후루 더 깨러가기
 			</Btn1>
 			<Btn2
 				onClick={() => {
@@ -395,7 +395,8 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 	justify-content: center;
 	margin-top: 3.94rem;
 	.result-title {
-		width: 70%;
+		min-width: 70%;
+		width: fit-content;
 		border-radius: 4.3055rem;
 		background: ${(props) => props.$bgcolor};
 		color: ${(props) => props.$color};
@@ -406,7 +407,7 @@ const ResultBox = styled.div<{ $bgcolor: string; $color: string; $bordercolor: s
 		font-size: 2rem;
 		font-style: normal;
 		font-weight: 400;
-		padding: 1rem 0rem;
+		padding: 1rem 1.3rem;
 	}
 	.icon {
 		position: relative;
