@@ -44,8 +44,8 @@ const Result1 = () => {
 			: selectGeneration === 1
 			? {
 					title: '몽글몽글 20-30대',
-					subTitle: '‘ㄱ’ㄴrLI..?! 우ㄹlºl 추억',
-					text1: '그 때 그 시절, 추억을 제대로 아는 당신 🥳',
+					subTitle: '‘ㄱ’ㄴrLI..?! 우ㄹlºl 추억 🥹',
+					text1: '그 때 그 시절, 추억을 제대로 아는 당신!',
 					text2: '추억팔이 할 때만큼 시간 빨리 간 적 없지~',
 					text3: '당장 추억 소환하기 위해 다음 테스트로 고!',
 			  }
