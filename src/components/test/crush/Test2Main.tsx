@@ -8,7 +8,7 @@ import ProgressBar from '../common/ProgressBar';
 import { QuestionData } from '@/types/request';
 import Image from 'next/image';
 import { testColors } from '@/utils/constant/colorConstants';
-import { getTestSet, postResultScore, updateUserCount } from '@/apis/test';
+import { getTestSet, postResultScore, updateLoginUserCount } from '@/apis/test';
 
 const Test2Main = () => {
 	const router = useRouter();
@@ -54,7 +54,7 @@ const Test2Main = () => {
 		if (progress === 10) {
 			// console.log(crushResult);
 			postResultScore(selectType, crushResult);
-			updateUserCount(2, selectType);
+			updateLoginUserCount(2, selectType);
 			setLoading(true);
 			setTimeout(() => {
 				router.push(`crushTest/result?fruits=${selectType}&score=${crushResult}`);

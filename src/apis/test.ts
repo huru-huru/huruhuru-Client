@@ -56,7 +56,7 @@ export const getRank = async () => {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		// console.log(response);
+		console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -64,12 +64,29 @@ export const getRank = async () => {
 	}
 };
 
-// 테스트 참여자수 증가
+// 테스트1 참여자수 증가
 export const updateUserCount = async (category: number, theme: number) => {
 	// console.log(category, theme);
 	try {
 		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`);
-		// console.log(response);
+		console.log(response);
+		return response;
+	} catch (error) {
+		console.log(error);
+		return false;
+	}
+};
+
+// 테스트2 참여자수 증가
+export const updateLoginUserCount = async (category: number, theme: number) => {
+	const token = localStorage.getItem('token');
+	try {
+		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`,{
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
