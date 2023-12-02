@@ -53,7 +53,7 @@ export async function onClickShareResult2KakaoTalk(title: string, content: strin
 						THU: 'https://huruhuru.netlify.app/img/result2thu.png',
 						TITLE: title, // 제목 텍스트
 						DESC: content, // 설명 텍스트
-						BTN: '기록 깨러가기',
+						BTN: '기록 깨러 가기',
 					},
 				});
 			}
