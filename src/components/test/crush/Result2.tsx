@@ -288,7 +288,7 @@ const Result2 = () => {
 				</ShareBtnGroup>
 			</TestShare>
 			<Ranking>
-				<Title>전체 랭킹</Title>
+				<Title>🏆 TOP 10</Title>
 				<RankWrapper $bordercolor={resultcolor.border}>
 					{ranking.map((item, index) => {
 						if (index + 1 === 1) {

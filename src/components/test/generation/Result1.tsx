@@ -153,7 +153,7 @@ const Result1 = () => {
 							width={40}
 							height={40}
 							priority
-							onClick={() => onClickShareResult1KakaoTalk(resultContent.title, resultContent.subTitle)}
+							onClick={() => onClickShareResult1KakaoTalk(resultContent.title, resultContent.subTitle, selectGeneration)}
 						/>
 					</KaKaoShareBtn>
 				</ShareBtnGroup>
