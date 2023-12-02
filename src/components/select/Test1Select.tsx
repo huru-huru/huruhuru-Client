@@ -15,8 +15,8 @@ const Test1Select = () => {
 
 	return (
 		<Wrapper>
-			<TitleDesignText text="테스트 1" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
-			<SubTitle>탕후루를 선택해 주세요!</SubTitle>
+			{/* <TitleDesignText text="테스트 1" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} /> */}
+			<SubTitle>°˖✧ 탕후루를 선택해 주세요 ✧˖°</SubTitle>
 			<Line>
 				<BtnWrapper
 					onClick={() => {
@@ -104,13 +104,13 @@ const SubTitle = styled.div`
 	position: relative;
 	text-align: center;
 	font-family: 'NeoDunggeunmo Pro';
-	font-size: 1.8rem;
+	font-size: 2.5rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
 	letter-spacing: 1.756px;
 	margin-top: 1rem;
-	margin-bottom: 0.5rem;
+	margin-bottom: 2rem;
 `;
 
 const Line = styled.div`
