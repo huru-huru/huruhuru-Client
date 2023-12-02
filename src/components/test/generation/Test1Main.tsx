@@ -146,7 +146,7 @@ const Test1Main = () => {
 			{loading ? (
 				<LoadingSection>
 					<Image src={`/img/loadingImage.png`} alt="로딩" width={150} height={150} />
-					<div className='text'>과연 탕후루에 대한 맛 평가는 ?</div>
+					<div className="text">과연 탕후루에 대한 맛 평가는 ?</div>
 				</LoadingSection>
 			) : (
 				<Wrapper $bg={testcolors.bg}>
@@ -232,6 +232,7 @@ const StyledImage = styled(Image)`
 `;
 
 const QuestionSection = styled.div`
+	font-family: SKYBORI;
 	min-height: 70vh;
 	width: 100%;
 	display: flex;
@@ -255,7 +256,7 @@ const LoadingSection = styled.div`
 	position: absolute;
 	z-index: 5;
 	display: flex;
-	flex-direction : column;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background: #fff0ee;
@@ -272,7 +273,7 @@ const LoadingSection = styled.div`
 	font-weight: 400;
 	line-height: normal;
 	text-align: center;
-	.text{
+	.text {
 		margin-top: 2rem;
 	}
 `;

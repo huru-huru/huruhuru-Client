@@ -195,6 +195,7 @@ const QuestionSection = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+	font-family: SKYBORI;
 	.source {
 		font-size: 1rem;
 		color: #6f6f6f;
