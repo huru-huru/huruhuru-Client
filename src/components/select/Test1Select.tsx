@@ -118,6 +118,8 @@ const Line = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	margin-top: 2.5rem;
+	min-height: 177px;
+	min-width: 32px;
 `;
 
 const BtnWrapper = styled.div`
