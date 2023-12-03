@@ -30,17 +30,25 @@ const IntroMain = () => {
 			case '1':
 				return (
 					<>
-					<TitleDesignText text="2000년대 추억팔이" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
-					<TitleDesignText text="고고씽" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
-					<SubTitle>2000년대의 당신은 몇 살이었나요?</SubTitle>
+						<TitleDesignText
+							text="2000년대 추억팔이"
+							bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)"
+							size={4.125}
+						/>
+						<TitleDesignText text="고고씽" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+						<SubTitle>2000년대의 당신은 몇 살이었나요?</SubTitle>
 					</>
 				);
 			case '2':
 				return (
 					<>
-					<TitleDesignText text="2000년대 유행" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
-					<TitleDesignText text="랭킹 퀴즈" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
-					<SubTitle>2000년대의 유행은 내가 제일 잘 알지!</SubTitle>
+						<TitleDesignText
+							text="2000년대 유행"
+							bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)"
+							size={4.125}
+						/>
+						<TitleDesignText text="랭킹 퀴즈" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+						<SubTitle>2000년대의 유행은 내가 제일 잘 알지!</SubTitle>
 					</>
 				);
 			default:
@@ -71,12 +79,14 @@ const IntroMain = () => {
 	return (
 		<>
 			<Wrapper>
-				<TitleWrapper>
-					{renderMissionComponent()}
-				</TitleWrapper>
+				<TitleWrapper>{renderMissionComponent()}</TitleWrapper>
 				{/* <BtnWrapper onClick={() => handleClick(INTRO_BTN.LOGIN)}> */}
 				<ImageWrapper>
-				{selectType === '1' ?<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />:<StyledImage src="/img/huru3.png" alt={'오렌지'} fill priority />}
+					{selectType === '1' ? (
+						<StyledImage src="/img/huru1.png" alt={'오렌지'} fill priority />
+					) : (
+						<StyledImage src="/img/huru3.png" alt={'오렌지'} fill priority />
+					)}
 				</ImageWrapper>
 				{selectType === '1' ? (
 					<BtnWrapper onClick={goTest}>
@@ -86,15 +96,17 @@ const IntroMain = () => {
 						/>
 					</BtnWrapper>
 				) : (
-					<BtnWrapper onClick={goLogin}>
+					<BtnWrapper>
 						<SelectButton
 							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
 							text="이 게임 한 적 있어!"
+							onClick={goLogin}
 						/>
+						{selectType === '1' ? null : <BtnSignup onClick={goSignup}>이 게임 처음이야</BtnSignup>}
 					</BtnWrapper>
 				)}
 				{/* <BtnSignup onClick={() => handleClick(INTRO_BTN.SIGNIN)}>이 게임 처음이야</BtnSignup> */}
-				{selectType === '1' ? null : <BtnSignup onClick={goSignup}>이 게임 처음이야</BtnSignup>}
+				{/* {selectType === '1' ? null : <BtnSignup onClick={goSignup}>이 게임 처음이야</BtnSignup>} */}
 				{signupModal && <Signup closeModal={closeSignup} goTest={goTest} />}
 				{loginModal && <Login closeModal={closeLogin} goTest={goTest} />}
 			</Wrapper>
@@ -108,7 +120,7 @@ const Wrapper = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	min-height: 100vh;
 	height: 100%;
@@ -120,11 +132,10 @@ const TitleWrapper = styled.div`
 	width: 100%;
 	display: flex;
 	position: relative;
+	margin-top: -30%;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 2rem;
-	bottom: 5rem;
 `;
 
 const SubTitle = styled.div`
@@ -138,6 +149,7 @@ const SubTitle = styled.div`
 	line-height: normal;
 	letter-spacing: 1.756px;
 	margin-top: 1rem;
+	z-index: 1;
 `;
 
 const BtnWrapper = styled.div`
@@ -147,7 +159,7 @@ const BtnWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	top: 3rem;
+	margin-bottom: -30%;
 `;
 
 const BtnSignup = styled.div`
@@ -159,11 +171,15 @@ const BtnSignup = styled.div`
 	font-weight: 400;
 	line-height: normal;
 	border-bottom: 2px solid #999;
-	top: 4rem;
+	margin-top: 2rem;
 `;
 
 const ImageWrapper = styled.div`
-	width: 20%;
+	width: 25%;
+	position: absolute;
+	max-width: 98px;
+	max-height: 300px;
+	margin-top: 8rem;
 `;
 
 const StyledImage = styled(Image)`
