@@ -23,6 +23,11 @@ const LandingSection = () => {
 				<TitleWrapper>
 					<SubTitle>본격 2000년대 모음.zip</SubTitle>
 					<TitleDesignText text="학교 앞 탕후루" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={5} />
+					<Copy>
+						<a href="https://instagram.com/wangga_chungang?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" rel="noopener noreferrer">
+							&copy; 추억탕후루 중앙대점
+						</a>
+					</Copy>
 				</TitleWrapper>
 				<ImgWrapper>
 					<StyledImage src="/img/landing.png" alt="랜딩 이미지" fill priority />
@@ -50,7 +55,10 @@ const LandingSection = () => {
 					</BtnWrapper2>
 				</BtnGroup>
 
-				<Footer>지금까지 {num}명이 참여했어요!!</Footer>
+				<Footer>
+					지금까지 {num}명이 참여했어요!!
+					{/* <div className="copy">&copy; 추억탕후루 중앙대점</div> */}
+				</Footer>
 			</MainWrapper>
 		</Wrapper>
 	);
@@ -93,7 +101,7 @@ const SubTitle = styled.div`
 	position: relative;
 	text-align: center;
 	font-family: 'NeoDunggeunmo Pro';
-	font-size: 17.559px;
+	font-size: 2rem;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
@@ -147,6 +155,7 @@ const BtnWrapper2 = styled.div`
 const Footer = styled.div`
 	background-color: #434343;
 	display: flex;
+	flex-direction: column;
 	position: fixed;
 	max-width: 490px;
 	width: 100%;
@@ -162,4 +171,24 @@ const Footer = styled.div`
 	line-height: normal;
 	bottom: 0px;
 	z-index: 3;
+	.copy {
+		font-size: 1rem;
+		font-style: normal;
+		font-weight: 400;
+		font-family: NeoDunggeunmo Pro;
+	}
+`;
+
+const Copy = styled.div`
+	width: 100%;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	text-align: end;
+	font-family: NeoDunggeunmo Pro;
+	cursor: pointer;
+	a {
+		color: black;
+		text-decoration: none;
+	}
 `;
