@@ -38,12 +38,17 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 	};
 
 	const go = async () => {
-		const success = await handleClick();
-		if (!success) {
-			setIsSignupFailed(true);
-			// alert('이미 존재하는 닉네임입니다.');
+		if (nickname == '') {
+			alert('닉네임을 입력해주세요!');
+		} else if (password == '') {
+			alert('비밀번호를 입력해주세요');
 		} else {
-			goTest();
+			const success = await handleClick();
+			if (!success) {
+				setIsSignupFailed(true);
+			} else {
+				goTest();
+			}
 		}
 	};
 
