@@ -57,7 +57,7 @@ const Signup = ({ closeModal, goTest }: ModalProps) => {
 			<Wrapper>
 				<InputWrapper>
 					<CloseButton onClick={closeModal}>X</CloseButton>
-					<LoginText>회원가입</LoginText>
+					<LoginText>닉네임 생성</LoginText>
 					<Text>어서 최고점에 도전해보라구!</Text>
 					<ImageWrapper>
 						<StyledImage src={'/img/fruitBig5.png'} alt={'파인애플'} fill priority />
