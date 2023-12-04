@@ -40,7 +40,7 @@ const LandingSection = () => {
 					>
 						<SelectButton
 							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
-							text="2000년대 추억팔이 고고씽"
+							text="2000년대 연령 테스트"
 						/>
 					</BtnWrapper>
 					<BtnWrapper2
@@ -50,7 +50,7 @@ const LandingSection = () => {
 					>
 						<SelectButton
 							bgColor="linear-gradient(0deg, #7FEFE5 0%, #CEF3DA 87.5%, #CBF2DB 87.5%)"
-							text="너, 2000년대 얼마나 아니?"
+							text="2000년대 유행 랭킹 게임"
 						/>
 					</BtnWrapper2>
 				</BtnGroup>

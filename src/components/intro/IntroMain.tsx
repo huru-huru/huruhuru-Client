@@ -31,11 +31,11 @@ const IntroMain = () => {
 				return (
 					<>
 						<TitleDesignText
-							text="2000년대 추억팔이"
+							text="2000년대"
 							bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)"
-							size={4.125}
+							size={3}
 						/>
-						<TitleDesignText text="고고씽" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+						<TitleDesignText text="연령 테스트" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
 						<SubTitle>2000년대의 당신은 몇 살이었나요?</SubTitle>
 					</>
 				);
@@ -43,11 +43,11 @@ const IntroMain = () => {
 				return (
 					<>
 						<TitleDesignText
-							text="2000년대 유행"
+							text="2000년대"
 							bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)"
-							size={4.125}
+							size={3}
 						/>
-						<TitleDesignText text="랭킹 퀴즈" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
+						<TitleDesignText text="유행 랭킹 게임" bgColor="linear-gradient(180deg, #fff 0%, #81efe5 100%)" size={4.125} />
 						<SubTitle>2000년대의 유행은 내가 제일 잘 알지!</SubTitle>
 					</>
 				);
