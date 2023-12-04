@@ -56,7 +56,7 @@ export const getRank = async () => {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -69,7 +69,7 @@ export const updateUserCount = async (category: number, theme: number) => {
 	// console.log(category, theme);
 	try {
 		const response = await axios.put(`${baseURL}?category=${category}&theme=${theme}`);
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);
@@ -86,7 +86,7 @@ export const updateLoginUserCount = async (category: number, theme: number) => {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		console.log(response);
+		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);

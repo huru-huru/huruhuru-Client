@@ -10,7 +10,7 @@
 // }
 
 export async function onClickShareKakaoTalk() {
-	console.log('공유하기 버튼 실행');
+	// console.log('공유하기 버튼 실행');
 	try {
 		await window.Kakao.Share.sendScrap({
 			requestUrl: 'https://huruhuru.netlify.app/', // 페이지 url
