@@ -10,11 +10,16 @@ export const metadata: Metadata = {
 	},
 	title: '학교 앞 탕후루',
 	description: '탕후루로 보는 2000년대 공감 테스트',
+	authors: [{ name: '추억탕후루 중앙대' },],
+	creator: '추억탕후루',
+	publisher: '추억탕후루',
 	icons: {
 		icon: '/img/testIcon.png',
 	},
 	keywords: [
 		'학교 앞 탕후루',
+		'탕후루 테스트',
+		'중앙대 탕후루',
 		'탕후루',
 		'2000년대',
 		'추억',
