@@ -3,6 +3,7 @@ import './globals.css';
 import StyledComponentsRegistry from './lib/registry';
 import RecoidContextProvider from './recoilContextProvider';
 import Script from 'next/script';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 export const metadata: Metadata = {
 	verification: {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 	},
 	title: '학교 앞 탕후루',
 	description: '탕후루로 보는 2000년대 공감 테스트',
-	authors: [{ name: '추억탕후루 중앙대' },],
+	authors: [{ name: '추억탕후루 중앙대' }],
 	creator: '추억탕후루',
 	publisher: '추억탕후루',
 	icons: {
@@ -50,6 +51,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html>
 			<StyledComponentsRegistry>
 				<body>
+					{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+						<GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+					) : null}
 					<RecoidContextProvider>{children}</RecoidContextProvider>
 				</body>
 				<Script src="https://developers.kakao.com/sdk/js/kakao.js" async />
