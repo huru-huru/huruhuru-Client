@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 학교 앞 탕후루 FE
+![#1 표지](https://github.com/huru-huru/huruhuru-Client/assets/101329724/00f04ffd-b491-4697-865a-a865598edf2e)
 
-## Getting Started
+> ### 목차
+> [1. Introduction](#1-introduction) <br>
+> [2. Service Flow](#2-service-flow) <br>
+> [3. Screen](#3-screen) <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;[3.1. 랜딩](#31-랜딩) <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;[3.2. 회원가입 및 로그인](#32-회원가입-및-로그인) <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;[3.3. 테스트 선택 및 진행](#33-테스트-선택-및-진행) <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;[3.4. 결과 및 랭킹](#34-결과-및-랭킹) <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;[3.5. 결과 공유하기](#35-결과-공유하기) <br>
+> [4. Development](#4-development) <br>
+> [5. 팀원](#5-팀원) <br>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 1. Introduction
+'학교 앞 탕후루'는 추억여행을 떠날 수 있는 본격 2000년대 퀴즈/테스트 서비스입니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+서비스 당시 약 2500명의 유저가 테스트를 진행했습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 2. Service Flow
+![#4 서비스 플로우](https://github.com/huru-huru/huruhuru-Client/assets/101329724/54dc3435-1423-4519-ab1c-12b8fb1bf7d6)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 3. Screen
+### 3.1. 랜딩
+![image](https://github.com/huru-huru/huruhuru-Client/assets/101329724/e4a362bf-5a3a-4322-9545-5ed307d13979)
 
-## Learn More
+### 3.2. 회원가입 및 로그인
+![image](https://github.com/huru-huru/huruhuru-Client/assets/101329724/0dc3b485-9c32-436c-b15d-707e94342cbc)
 
-To learn more about Next.js, take a look at the following resources:
+### 3.3. 테스트 선택 및 진행
+![테스트진행](https://github.com/huru-huru/huruhuru-Client/assets/101329724/8019ec6e-3abe-45d5-954d-180844ce57cb)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3.4. 결과 및 랭킹
+![결과페이지](https://github.com/huru-huru/huruhuru-Client/assets/101329724/73570f8e-dc06-4c93-a8c5-3a9f77f9ed0f)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 3.5. 결과 SNS 공유하기
+- 결과에 따라 공유되는 이미지와 멘트가 변경됩니다
+![결과공유하기](https://github.com/huru-huru/huruhuru-Client/assets/101329724/f0ef3772-cd55-4699-a57e-810ded9e139c)
 
-## Deploy on Vercel
+### 3.6 기타
+- sitemap을 통한 SEO 최적화 진행
+- 구글 애널리틱스를 통해 사용자와 페이지 뷰의 변화를 측정
+- 배포 후 QA를 통해 사용자 경험 개선
+  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 4. Development
+### 4.1 libraries
+- `axios`
+- `react-icons`
+- `recoil`
+- `recoil-persist`
+- `styled-components`
+- `next-share`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 4.2 Branch
+`main` : Next.js 기반/배포 <br>
+`dev` : 배포 dev branch <br>
+
+## 5. 팀원
+|이름|학과|github|
+|-|-|-|
+|고민지|중앙대학교 경영학부|[@gominzip](https://github.com/gominzip)|
+|최재영|중앙대학교 산업보안학과|[@cyj3458](https://github.com/cjy3458)|
