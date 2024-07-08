@@ -10,6 +10,7 @@
 > &nbsp;&nbsp;&nbsp;&nbsp;[3.3. 테스트 선택 및 진행](#33-테스트-선택-및-진행) <br>
 > &nbsp;&nbsp;&nbsp;&nbsp;[3.4. 결과 및 랭킹](#34-결과-및-랭킹) <br>
 > &nbsp;&nbsp;&nbsp;&nbsp;[3.5. 결과 공유하기](#35-결과-공유하기) <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;[3.6. 기타](#36-기타) <br>
 > [4. Development](#4-development) <br>
 > [5. 팀원](#5-팀원) <br>
 
@@ -35,7 +36,8 @@
 ### 3.4. 결과 및 랭킹
 ![결과페이지](https://github.com/huru-huru/huruhuru-Client/assets/101329724/73570f8e-dc06-4c93-a8c5-3a9f77f9ed0f)
 
-### 3.5. 결과 SNS 공유하기
+### 3.5. 결과 공유하기
+- 카카오, 트위터, 페이스북으로 결과를 공유할 수 있습니다.
 - 결과에 따라 공유되는 이미지와 멘트가 변경됩니다
 ![결과공유하기](https://github.com/huru-huru/huruhuru-Client/assets/101329724/f0ef3772-cd55-4699-a57e-810ded9e139c)
 
